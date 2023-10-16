@@ -1,8 +1,8 @@
 FreeTube: FreeTube
 # Currently on Subscriptions, Playlists, and History
 'This part of the app is not ready yet. Come back later when progress has been made.': >-
-  Dieser Teil des Programms ist noch nicht fertig. Bitte komm zu einem späteren Zeitpunkt
-  wieder.
+  Dieser Teil der App ist noch nicht bereit. Kommen Sie später wieder, wenn Fortschritte
+  gemacht wurden.
 
 # Webkit Menu Bar
 File: Datei
@@ -15,21 +15,35 @@ Copy: Kopieren
 Paste: Einfügen
 Delete: Löschen
 Select all: Alles auswählen
-Reload: Aktualisieren
-Force Reload: Aktualisierung erzwingen
+Reload: Neu laden
+Force Reload: Neu laden erzwingen
 Toggle Developer Tools: Entwicklerwerkzeuge aktivieren/deaktivieren
 Actual size: Originalgröße
 Zoom in: Vergrößern
 Zoom out: Verkleinern
-Toggle fullscreen: Vollbild aktivieren
+Toggle fullscreen: Vollbild aktivieren/deaktivieren
 Window: Fenster
 Minimize: Minimieren
 Close: Schließen
 Back: Zurück
 Forward: Vorwärts
 
+# Global
+# Anything shared among components / views should be put here
+Global:
+  Videos: Videos
+  Shorts: Kurzvideos
+  Live: Live
+  Community: Gemeinschaft
+
 # Search Bar
-Search / Go to URL: Suche / Geh zu URL
+  Counts:
+    Video Count: 1 Video | {count} Videos
+    Channel Count: 1 Kanal | {count} Kanäle
+    Subscriber Count: 1 Abonnent | {count} Abonnenten
+    View Count: 1 Aufruf | {count} Aufrufe
+    Watching Count: 1 Zuschauer | {count} Zuschauer
+Search / Go to URL: Suche / Gehe zu URL
   # In Filter Button
 Search Filters:
   Search Filters: Suchfilter
@@ -37,7 +51,7 @@ Search Filters:
     Sort By: Sortiere nach
     Most Relevant: Am relevantesten
     Rating: Bewertung
-    Upload Date: Hochlade-Datum
+    Upload Date: Hochladedatum
     View Count: Anzahl der Aufrufe
   Time:
     Time: Zeit
@@ -77,7 +91,7 @@ Subscriptions:
   'Getting Subscriptions.  Please wait.': Rufe Abonnements ab. Bitte warten.
   Refresh Subscriptions: Abonnements aktualisieren
   Getting Subscriptions. Please wait.: Abonnements werden geladen. Bitte warten.
-  This profile has a large number of subscriptions.  Forcing RSS to avoid rate limiting: Dieses
+  This profile has a large number of subscriptions. Forcing RSS to avoid rate limiting: Dieses
     Profil hat eine große Anzahl von Abonnements.  RSS zur Vermeidung von Geschwindigkeitsbeschränkungen
     erzwingen
   Load More Videos: Mehr Videos laden
@@ -85,6 +99,12 @@ Subscriptions:
   Disabled Automatic Fetching: Du hast den automatischen Abruf von Abonnements deaktiviert.
     Aktualisiere die Abonnements, um sie hier zu sehen.
   Empty Channels: Deine abonnierten Kanäle haben derzeit keine Videos.
+  Subscriptions Tabs: Registerkarten für Abonnements
+  All Subscription Tabs Hidden: Alle Registerkarten für Abonnements sind ausgeblendet.
+    Um den Inhalt hier zu sehen, blenden Sie bitte einige Registerkarten im Abschnitt
+    „{subsection}“ in „{settingsSection}“ ein.
+  Load More Posts: Mehr Beiträge laden
+  Empty Posts: Deine abonnierten Kanäle haben derzeit keine Beiträge.
 Trending:
   Trending: Trends
   Trending Tabs: Trendtabs
@@ -138,6 +158,7 @@ Settings:
       Beginning: Anfang
       Middle: Mitte
       End: Ende
+      Hidden: Versteckt
     'Invidious Instance (Default is https://invidious.snopyta.org)': Invidious-Instanz
       (Standard ist https://invidious.snopyta.org)
     Region for Trending: Region für Trends
@@ -171,6 +192,8 @@ Settings:
       Dracula: Dracula
       System Default: Systemvoreinstellung
       Catppuccin Mocha: Catppuccin Mocha
+      Hot Pink: Pink
+      Pastel Pink: Pastellrosa
     Main Color Theme:
       Main Color Theme: Hauptfarbe des Farbschemas
       Red: Rot
@@ -273,6 +296,8 @@ Settings:
     Enter Fullscreen on Display Rotate: Bei drehen des Bildschirms zu Vollbild wechseln
     Skip by Scrolling Over Video Player: Überspringen durch Scrollen über den Videoplayer
     Allow DASH AV1 formats: DASH AV1-Formate zulassen
+    Comment Auto Load:
+      Comment Auto Load: Kommentare automatisch laden
   Subscription Settings:
     Subscription Settings: Abonnement-Einstellungen
     Hide Videos on Watch: Verstecke Videos bei Wiedergabe
@@ -405,6 +430,24 @@ Settings:
     Hide Channels Placeholder: Kanalname oder Kanal-ID
     Display Titles Without Excessive Capitalisation: Titel ohne übermäßige Großschreibung
       anzeigen
+    Hide Channel Playlists: Kanal-Wiedergabelisten ausblenden
+    Hide Channel Community: Kanal-Gemeinschaft ausblenden
+    Hide Channel Shorts: Kurzvideos des Kanals ausblenden
+    Hide Featured Channels: Hervorgehobene Kanäle ausblenden
+    Sections:
+      Side Bar: Seitenleiste
+      Channel Page: Kanalseite
+      General: Allgemein
+      Watch Page: Seite beobachten
+      Subscriptions Page: Abonnements-Seite
+    Hide Channel Podcasts: Kanal-Podcasts ausblenden
+    Hide Subscriptions Videos: Videos der Abonnements ausblenden
+    Hide Subscriptions Shorts: Kurzvideos der Abonnements ausblenden
+    Hide Channel Releases: Kanalveröffentlichungen ausblenden
+    Hide Subscriptions Live: Live der Abonnements ausblenden
+    Blur Thumbnails: Vorschaubilder unscharf machen
+    Hide Profile Pictures in Comments: Profilbilder in den Kommentaren verbergen
+    Hide Subscriptions Community: Abonnementsgemeinschaft ausblenden
   The app needs to restart for changes to take effect. Restart and apply change?: Um
     die Änderungen anzuwenden muss die Anwendung neustarten. Jetzt neustarten und
     Änderungen aktivieren?
@@ -438,6 +481,7 @@ Settings:
       Prompt To Skip: Aufforderung zum Überspringen
       Do Nothing: Nichts tun
     Category Color: Kategoriefarbe
+    UseDeArrowTitles: DeArrow-Video-Titel verwenden
   External Player Settings:
     Ignore Unsupported Action Warnings: Nicht unterstützte Aktionswarnungen ignorieren
     External Player: Externer Player
@@ -545,9 +589,8 @@ About:
   View License: Lizenz einsehen
   Licensed under the AGPLv3: Lizensiert unter der AGPLv3
   Source code: Quellcode
+  Discussions: Diskussionen
 Channel:
-  Subscriber: Abonnement
-  Subscribers: Abonnements
   Subscribe: Abonnieren
   Unsubscribe: Deabonnieren
   Search Channel: Durchsuche Kanal
@@ -573,11 +616,43 @@ Channel:
     About: Über
     Channel Description: Kanalbeschreibung
     Featured Channels: Empfohlene Kanäle
+    Tags:
+      Search for: Nach „{tag}“ suchen
+      Tags: Markierungen
+    Details: Einzelheiten
+    Location: Standort
+    Joined: Beigetreten
   Added channel to your subscriptions: Der Kanal wurde deinen Abonnements hinzugefügt
   Removed subscription from {count} other channel(s): Es wurden {count} anderen Kanälen
-    deabonniert
+    gekündigt
   Channel has been removed from your subscriptions: Der Kanal wurde von deinen Abonnements
     entfernt
+  Channel Tabs: Kanal-Registerkarten
+  This channel is age-restricted and currently cannot be viewed in FreeTube.: Dieser
+    Kanal ist altersbeschränkt und kann derzeit nicht in FreeTube angesehen werden.
+  This channel does not allow searching: Dieser Kanal erlaubt keine Suche
+  This channel does not exist: Dieser Kanal existiert nicht
+  Community:
+    This channel currently does not have any posts: Dieser Kanal enthält derzeit keine
+      Beiträge
+    votes: '{votes} Stimmen'
+    Reveal Answers: Antworten aufzeigen
+    Hide Answers: Antworten verbergen
+  Live:
+    Live: Live
+    This channel does not currently have any live streams: Dieser Kanal hat derzeit
+      keine Live-Streams
+  Shorts:
+    This channel does not currently have any shorts: Dieser Kanal hat derzeit keine
+      Kurzvideos
+  Podcasts:
+    Podcasts: Podcasts
+    This channel does not currently have any podcasts: Dieser Kanal hat aktuell keine
+      Podcasts
+  Releases:
+    Releases: Veröffentlichungen
+    This channel does not currently have any releases: Dieser Kanel hat aktuell keine
+      Veröffentlichungen
 Video:
   Open in YouTube: In YouTube öffnen
   Copy YouTube Link: YouTube-Link kopieren
@@ -585,10 +660,7 @@ Video:
   Copy YouTube Embedded Player Link: Link des eingebetteten YouTube-Abspieler kopieren
   Open in Invidious: In Invidious öffnen
   Copy Invidious Link: Invidious-Link kopieren
-  View: Aufruf
   Views: Aufrufe
-  # Context is "X People Watching"
-  Watching: aktive Zuschauer
   Watched: Gesehen
   # As in a Live Video
   Live: Live
@@ -599,9 +671,9 @@ Video:
     Version nicht unterstützt.
   'Chat is disabled or the Live Stream has ended.': Der Chat ist deaktiviert oder
     der Livestream ist beendet.
-  Live chat is enabled.  Chat messages will appear here once sent.: Der Live-Chat
-    ist aktiviert.  Chatnachrichten tauchen hier auf, wenn sie abgesendet wurden.
-  'Live Chat is currently not supported with the Invidious API.  A direct connection to YouTube is required.': Live-Chat
+  Live chat is enabled. Chat messages will appear here once sent.: Der Live-Chat ist
+    aktiviert.  Chatnachrichten tauchen hier auf, wenn sie abgesendet wurden.
+  'Live Chat is currently not supported with the Invidious API. A direct connection to YouTube is required.': Live-Chat
     ist in der aktuellen Invidious-API nicht unterstützt.  Eine direkte Verbindung
     zu YouTube wird benötigt.
   Published:
@@ -722,6 +794,9 @@ Video:
   Show Super Chat Comment: Super-Chat-Kommentar anzeigen
   Scroll to Bottom: Nach unten scrollen
   Upcoming: Demnächst
+  'Live Chat is unavailable for this stream. It may have been disabled by the uploader.': Live-Chat
+    ist für diesen Stream nicht verfügbar. Möglicherweise wurde es vom Uploader deaktiviert.
+  Pause on Current Video: Pause für aktuelles Video
 Videos:
   #& Sort By
   Sort By:
@@ -771,10 +846,10 @@ Share:
   Invidious Channel URL copied to clipboard: Invidious Kanallink in die Zwischenablage
     kopiert
   Share Channel: Kanal teilen
-Mini Player: Mini-Abspieler
+Mini Player: Mini-Wiedergabefenster
 Comments:
   Comments: Kommentare
-  Click to View Comments: Klicke, um Kommentare anzuzeigen
+  Click to View Comments: Hier klicken, um Kommentare anzuzeigen
   Getting comment replies, please wait: Kommentare werden geladen, bitte warten
   Show Comments: Zeige Kommentare
   Hide Comments: Verstecke Kommentare
@@ -798,6 +873,7 @@ Comments:
   Member: Mitglied
   View {replyCount} replies: '{replyCount} Antworten ansehen'
   Hearted: Gefällt mir
+  Subscribed: Abonniert
 Up Next: Nächster Titel
 
 # Toast Messages
@@ -815,10 +891,8 @@ Shuffle is now disabled: Zufallswiedergabe ist jetzt deaktiviert
 Shuffle is now enabled: Zufallswiedergabe ist jetzt aktiviert
 Playing Next Video: Spiele nächstes Video
 Playing Previous Video: Spiele vorheriges Video
-Playing next video in 5 seconds.  Click to cancel: Spiele nächstes Video in 5 Sekunden.
-  Klicke um abzubrechen.
 Canceled next video autoplay: Wiedergabe des nächsten Videos abgebrochen
-'The playlist has ended.  Enable loop to continue playing': 'Ende der Wiedergabeliste
+'The playlist has ended. Enable loop to continue playing': 'Ende der Wiedergabeliste
   erreicht.  Aktiviere Wiederholung um weiter abzuspielen'
 
 Yes: Ja
@@ -867,9 +941,10 @@ Profile:
   Profile Select: Profilauswahl
   Profile Filter: Profilfilter
   Profile Settings: Profileinstellungen
+  Toggle Profile List: Profilliste umschalten
 The playlist has been reversed: Die Wiedergabeliste wurde umgedreht
 A new blog is now available, {blogTitle}. Click to view more: Ein neuer Blogeintrag
-  ist verfügbar, {blogTitle}. Um ihn zu öffnen klicken
+  ist verfügbar, {blogTitle}. Klicke, um mehr zu sehen
 Download From Site: Von der Website herunterladen
 Version {versionNumber} is now available!  Click for more details: Version {versionNumber}
   ist jetzt verfügbar!  Für mehr Details klicken
@@ -884,11 +959,10 @@ Tooltips:
       nutzen soll. Die lokale API ist ein integrierter Extrahierer. Die Invidious-API
       dagegen verwendet einen externen Server.
     Region for Trending: Die Trendregion erlaubt es dir auszuwählen, aus welchem Land
-      die Trends angezeigt werden sollen. Nicht alle Optionen werden auch von YouTube
-      unterstützt.
-    External Link Handling: "Wähle das Standardverhalten, wenn ein Link angeklickt\
-      \ wird, der nicht in FreeTube geöffnet werden kann.\nStandardmäßig wird FreeTube\
-      \ den angeklickten Link in deinem Standardbrowser öffnen.\n"
+      die Trends angezeigt werden sollen.
+    External Link Handling: "Wähle das Standardverhalten, wenn ein Link angeklickt
+      wird, der nicht in FreeTube geöffnet werden kann.\nStandardmäßig wird FreeTube
+      den angeklickten Link in deinem Standardbrowser öffnen.\n"
   Subscription Settings:
     Fetch Feeds from RSS: Sobald aktiviert wird FreeTube RSS anstatt der Standardmethode
       nutzen, um deine Abos zu aktualisieren. RSS ist schneller und verhindert das
@@ -941,10 +1015,17 @@ Tooltips:
       und aktiviert einen benutzerdefinierten In-Memory-Image-Cache. Dies führt zu
       einer erhöhten Nutzung des Direktzugriffsspeichers.
   Distraction Free Settings:
-    Hide Channels: Geben Sie einen Kanalnamen oder eine Kanal-ID ein, um alle Videos,
-      Wiedergabelisten und den Kanal selbst vor der Anzeige in der Suche oder den
-      Trends zu verbergen. Der eingegebene Kanalname muss vollständig übereinstimmen
-      und es wird zwischen Groß- und Kleinschreibung unterschieden.
+    Hide Channels: Geben Sie einen Kanalnamen oder eine Kanal-ID ein, um zu verhindern,
+      dass alle Videos, Wiedergabelisten und der Kanal selbst in der Suche, den Trends,
+      den beliebtesten und den empfohlenen Videos angezeigt werden. Der eingegebene
+      Kanalname muss vollständig übereinstimmen und es wird zwischen Groß- und Kleinschreibung
+      unterschieden.
+    Hide Subscriptions Live: Diese Einstellung wird durch die app-weite Einstellung
+      „{appWideSetting}“ im Abschnitt „{subsection}“ des Abschnitts „{settingsSection}“
+      außer Kraft gesetzt
+  SponsorBlock Settings:
+    UseDeArrowTitles: Ersetzen Sie Videotitel durch von Benutzern eingereichte Titel
+      von DeArrow.
 Playing Next Video Interval: Nächstes Video wird sofort abgespielt. Zum Abbrechen
   klicken. | Nächstes Video wird in {nextVideoInterval} Sekunden abgespielt. Zum Abbrechen
   klicken. | Nächstes Video wird in {nextVideoInterval} Sekunden abgespielt. Zum Abbrechen
@@ -997,3 +1078,11 @@ Chapters:
     aktuelles Kapitel: {chapterName}'
 Preferences: Einstellungen
 Ok: OK
+Hashtag:
+  Hashtag: Schlagwort
+  This hashtag does not currently have any videos: Unter diesem Schlagwort konnten
+    derzeit keine Videos gefunden werden
+Playlist will pause when current video is finished: Wiedergabeliste wird pausiert,
+  wenn das aktuelle Video beendet ist
+Playlist will not pause when current video is finished: Wiedergabeliste wird nicht
+  pausiert, wenn das aktuelle Video beendet ist

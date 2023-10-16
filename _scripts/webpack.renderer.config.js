@@ -132,15 +132,14 @@ const config = {
   ],
   resolve: {
     alias: {
-      vue$: 'vue/dist/vue.common.js',
+      vue$: 'vue/dist/vue.runtime.esm.js',
 
-      // use the web version of linkedom
-      linkedom$: 'linkedom/worker',
+      'youtubei.js$': 'youtubei.js/web',
 
-      // defaults to the prebundled browser version which causes webpack to error with:
-      // "Critical dependency: require function is used in a way in which dependencies cannot be statically extracted"
-      // webpack likes to bundle the dependencies itself, could really have a better error message though
-      'youtubei.js$': 'youtubei.js/dist/browser.js',
+      // video.js's mpd-parser uses @xmldom/xmldom so that it can support both node and web browsers
+      // as FreeTube only runs in electron and web browsers we can use the native DOMParser class, instead of the "polyfill"
+      // https://caniuse.com/mdn-api_domparser
+      '@xmldom/xmldom$': path.resolve(__dirname, '_domParser.js')
     },
     extensions: ['.js', '.vue']
   },

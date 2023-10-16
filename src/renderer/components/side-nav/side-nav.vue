@@ -3,6 +3,7 @@
     ref="sideNav"
     class="sideNav"
     :class="[{closed: !isOpen}, applyHiddenLabels]"
+    role="navigation"
   >
     <div
       class="inner"
@@ -214,6 +215,9 @@
           >
             <img
               class="channelThumbnail"
+              height="35"
+              width="35"
+              loading="lazy"
               :src="channel.thumbnail"
               :alt="isOpen ? '' : channel.name"
             >

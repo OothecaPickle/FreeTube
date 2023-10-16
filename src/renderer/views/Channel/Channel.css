@@ -1,23 +1,26 @@
 .card {
   position: relative;
-  width: 85%;
-  margin: 0 auto 20px;
+  inline-size: 85%;
+  margin-block: 0 20px;
+  margin-inline: auto;
   box-sizing: border-box;
 }
 
 .channelDetails {
   padding: 0;
+  max-inline-size: 92vw;
 }
 
 .channelBannerContainer {
   background: center / cover no-repeat var(--banner-url, transparent);
-  height: 13vw;
-  min-height: 110px;
-  max-height: 32vh;
-  width: 100%;
+  block-size: 13vw;
+  min-block-size: 110px;
+  max-block-size: 32vh;
+  inline-size: 100%;
 }
 
 .channelBannerContainer.default {
+  background-color: black;
   background-image: url("../../assets/img/defaultBanner.png");
   background-repeat: repeat;
   background-size: contain;
@@ -26,47 +29,50 @@
 .channelInfoContainer {
   position: relative;
   background-color: var(--card-bg-color);
-  margin-top: 10px;
-  padding: 0 16px;
+  margin-block-start: 10px;
+  padding-block: 0;
+  padding-inline: 16px;
 }
 
 .channelInfo {
   display: flex;
   flex-flow: row wrap;
-  width: 100%;
+  inline-size: 100%;
   justify-content: space-between;
 }
 
+.channelInfoHasError {
+  padding-block-end: 10px;
+}
+
 .channelThumbnail {
-  width: 100px;
-  height: 100px;
-  border-radius: 200px 200px 200px 200px;
-  -webkit-border-radius: 200px 200px 200px 200px;
+  inline-size: 100px;
+  block-size: 100px;
+  border-radius: 200px;
+  -webkit-border-radius: 200px;
+  object-fit: cover;
 }
 
 .channelName {
   font-weight: bold;
-  width: 100%;
+  inline-size: 100%;
   font-size: 25px;
 }
 
 .channelSubCount {
   color: var(--tertiary-text-color);
-  top: 50px;
-  left: 120px;
+  inset-block-start: 50px;
+  inset-inline-start: 120px;
 }
 
 .channelInfoActionsContainer {
   display: flex;
-  min-width: 230px;
+  gap: 30px;
   justify-content: space-between;
 }
 
 .subscribeButton {
-  height: 50px;
-  min-width: 150px;
-  align-self: center;
-  margin-bottom: 10px;
+  block-size: fit-content;
 }
 
 .shareIcon {
@@ -74,76 +80,63 @@
 }
 
 .channelSearch {
-  width: 220px;
-  margin-left: auto;
+  inline-size: 220px;
+  margin-inline-start: auto;
   align-self: flex-end;
   flex: 1 1 0%;
 }
 
 .sortSelect {
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 .channelInfoTabs {
   position: relative;
-  width: 100%;
-  height: auto;
+  inline-size: 100%;
+  block-size: auto;
   justify-content: unset;
   gap: 32px;
-  padding: .3em 0;
+  padding-block: .3em;
+  padding-inline: 0;
+  flex-wrap: nowrap;
 }
 
 .tabs {
   display: flex;
-  flex: 0 1 33%;
+  flex: 0 1 66%;
+  flex-wrap: wrap;
 }
 
 .tab {
   padding: 15px;
   font-size: 15px;
   cursor: pointer;
-  flex: 1 1 0%;
   align-self: flex-end;
   text-align: center;
   color: var(--tertiary-text-color);
-  border-bottom: 3px solid transparent;
+  border-block-end: 3px solid transparent;
 }
 
 .tab:hover,
 .tab:focus {
   font-weight: bold;
-  border-bottom: 3px solid var(--tertiary-text-color);
+  border-block-end: 3px solid var(--tertiary-text-color);
 }
 
-.selectedTab,
-.selectedTab:hover {
+.selectedTab {
   color: var(--primary-text-color);
-  border-bottom: 3px solid var(--primary-color);
+  border-block-end: 3px solid var(--primary-color);
   font-weight: bold;
   box-sizing: border-box;
 }
 
-.aboutTab {
-  background-color: var(--card-bg-color);
-  position: relative;
-  margin-top: 0px;
-  padding: 10px;
-  z-index: 1;
-}
-
-.aboutInfo {
-  font-family: 'Roboto', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  font-size: 17px;
-  white-space: pre-wrap;
-}
-
 .channelSearch {
-  margin-top: 10px;
-  max-width: 250px;
+  margin-block-start: 10px;
+  max-inline-size: 250px;
 }
 
 .elementListLoading {
-  margin-top: 200px;
+  margin-block-start: 200px;
 }
 
 .message {
@@ -152,12 +145,12 @@
 
 .getNextPage {
   background-color: var(--search-bar-color);
-  width: 100%;
-  height: 45px;
+  inline-size: 100%;
+  block-size: 45px;
   line-height: 45px;
   text-align: center;
   cursor: pointer;
-  margin-top: 16px;
+  margin-block-start: 16px;
 }
 
 .thumbnailContainer {
@@ -168,7 +161,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-left: 1em;
+  padding-inline-start: 1em;
 }
 
 .channelLineContainer h1,
@@ -176,14 +169,74 @@
   margin: 0;
 }
 
+.communityThumbnail {
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-border-radius: 200px;
+  border-radius: 200px;
+  block-size: 12%;
+  inline-size: 12%;
+}
+
+.ft-community-image {
+  display: block;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+}
+
+.community-post-container {
+  padding-inline-start: 30%;
+  padding-inline-end: 30%;
+}
+
 @media only screen and (max-width: 800px) {
   .channelInfoTabs {
-    height: auto;
+    block-size: auto;
     flex-flow: column-reverse;
+    gap: 0;
   }
 
   .channelSearch {
-    width: 100%;
-    max-width: none;
+    inline-size: 100%;
+    max-inline-size: none;
+  }
+
+  .tabs {
+    flex: 1 1 0;
+  }
+
+  .tab {
+    flex: 1 1 0%;
+  }
+
+  #communityPanel {
+    margin-block-start: 1rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .channelInfo {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .channelInfoActionsContainer {
+    flex-direction: column-reverse;
+  }
+
+  .thumbnailContainer {
+    flex-direction: column;
+  }
+
+  .thumbnailContainer, .channelInfoActionsContainer {
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+@media only screen and (max-width: 260px) {
+   .channelDetails {
+    max-inline-size: none;
   }
 }

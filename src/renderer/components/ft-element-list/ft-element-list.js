@@ -13,14 +13,27 @@ export default defineComponent({
       type: Array,
       required: true
     },
+    display: {
+      type: String,
+      required: false,
+      default: ''
+    },
     showVideoWithLastViewedPlaylist: {
       type: Boolean,
       default: false
+    },
+    useChannelsHiddenPreference: {
+      type: Boolean,
+      default: true,
     },
   },
   computed: {
     listType: function () {
       return this.$store.getters.getListType
+    },
+
+    displayValue: function () {
+      return this.display === '' ? this.listType : this.display
     }
   }
 })
