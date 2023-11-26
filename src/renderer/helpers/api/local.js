@@ -233,17 +233,24 @@ export async function getLocalChannelId(url) {
   try {
     const innertube = await createInnertube()
 
-    // resolveURL throws an error if the URL doesn't exist
-    const navigationEndpoint = await innertube.resolveURL(url)
+    // Resolve URL and allow 1 redirect, as YouTube should just do 1
+    // We want to avoid an endless loop
+    for (let i = 0; i < 2; i++) {
+      // resolveURL throws an error if the URL doesn't exist
+      const navigationEndpoint = await innertube.resolveURL(url)
 
-    if (navigationEndpoint.metadata.page_type === 'WEB_PAGE_TYPE_CHANNEL') {
-      return navigationEndpoint.payload.browseId
-    } else {
-      return null
+      if (navigationEndpoint.metadata.page_type === 'WEB_PAGE_TYPE_CHANNEL') {
+        return navigationEndpoint.payload.browseId
+      } else if (navigationEndpoint.metadata.page_type === 'WEB_PAGE_TYPE_UNKNOWN' && navigationEndpoint.payload.url?.startsWith('https://www.youtube.com/')) {
+        // handle redirects like https://www.youtube.com/@wanderbots, which resolves to https://www.youtube.com/Wanderbots, which we need to resolve again
+        url = navigationEndpoint.payload.url
+      } else {
+        return null
+      }
     }
-  } catch {
-    return null
-  }
+  } catch { }
+
+  return null
 }
 
 /**
@@ -475,9 +482,13 @@ export function parseLocalListPlaylist(playlist, author = undefined) {
       channelName = playlist.author.name
       channelId = playlist.author.id
     }
-  } else {
+  } else if (author) {
     channelName = author.name
     channelId = author.id
+  } else if (playlist.author?.name) {
+    // auto-generated album playlists don't have an author
+    // so in search results, the author text is "Playlist" and doesn't have a link or channel ID
+    channelName = playlist.author.name
   }
 
   return {

@@ -1,16 +1,17 @@
 # Put the name of your locale in the same language
-Locale Name: 'Беларуская'
+Locale Name: 'Gagana Samoa'
 FreeTube: 'FreeTube'
 # Currently on Subscriptions, Playlists, and History
 'This part of the app is not ready yet. Come back later when progress has been made.': >-
-  Гэтая частка праграмы яшчэ не гатова. Прыходзьце пазней.
+  E le saauni le vaega o le polokalama lenei. Fa'amolemole toe fo'i mai afea na fai
+  atili i alualu i luma.
 
 # Webkit Menu Bar
-File: 'Файл'
-New Window: 'Новае акно'
-Preferences: 'Параметры'
-Quit: 'Выйсці'
-Edit: 'Рэдагаваць'
+File: 'Faila'
+New Window: 'Fa''amalama fou'
+Preferences: 'Faaitalia'
+Quit: 'Ulufafo'
+Edit: 'Sui'
 Undo: ''
 Redo: ''
 Cut: ''
