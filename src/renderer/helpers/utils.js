@@ -672,3 +672,12 @@ export function escapeHTML(untrusted) {
 export function deepCopy(obj) {
   return JSON.parse(JSON.stringify(obj))
 }
+
+/**
+ * @template T
+ * @param {T[]} array
+ * @returns {T}
+ */
+export function randomArrayItem(array) {
+  return array[Math.floor(Math.random() * array.length)]
+}

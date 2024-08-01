@@ -273,7 +273,7 @@ export default defineComponent({
       }
 
       try {
-        let result = await getLocalVideoInfo(this.videoId)
+        const result = await getLocalVideoInfo(this.videoId)
 
         this.isFamilyFriendly = result.basic_info.is_family_safe
 
@@ -287,13 +287,7 @@ export default defineComponent({
           return
         }
 
-        let playabilityStatus = result.playability_status
-        let bypassedResult = null
-        if (playabilityStatus.status === 'LOGIN_REQUIRED') {
-          // try to bypass the age restriction
-          bypassedResult = await getLocalVideoInfo(this.videoId, true)
-          playabilityStatus = result.playability_status
-        }
+        const playabilityStatus = result.playability_status
 
         if (playabilityStatus.status === 'UNPLAYABLE') {
           /**
@@ -422,13 +416,6 @@ export default defineComponent({
         // are different (which is not detected here)
         this.commentsEnabled = result.comments_entry_point_header != null
         // endregion No comment detection
-
-        // the bypassed result is missing some of the info that we extract in the code above
-        // so we only overwrite the result here
-        // we need the bypassed result for the streaming data and the subtitles
-        if (bypassedResult) {
-          result = bypassedResult
-        }
 
         if ((this.isLive || this.isPostLiveDvr) && !this.isUpcoming) {
           try {
