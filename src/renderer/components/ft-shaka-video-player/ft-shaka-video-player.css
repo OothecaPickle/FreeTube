@@ -256,13 +256,6 @@
   }
 }
 
-@media (prefers-reduced-transparency:no-preference) {
-  /* add transparency to big play button */
-  :deep(.shaka-controls-container[shown='true'] > .shaka-play-button-container > .shaka-play-button) {
-    opacity: 0.75 !important;
-  }
-}
-
 :deep(.shaka-controls-button-panel),
 :deep(.shaka-statistics-container),
 :deep(.shaka-ad-statistics-container),
@@ -276,5 +269,10 @@
 
 :deep(.shaka-text-container) {
   transition-delay: 100ms;
+}
+
+:deep(.shaka-play-button) {
+  padding: 3%;
+  background-color: rgba(255 255 255 / 60%);
 }
 /* stylelint-enable liberty/use-logical-spec */
