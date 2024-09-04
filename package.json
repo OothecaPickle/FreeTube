@@ -51,7 +51,7 @@
     "prettier": "prettier --write \"{src,_scripts}/**/*.{js,vue}\"",
     "rebuild:electron": "electron-builder install-app-deps",
     "release": "run-s test build",
-    "ci": "yarn install --silent --frozen-lockfile"
+    "ci": "yarn install --silent"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
