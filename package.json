@@ -50,7 +50,7 @@
     "pack:botGuardScript": "webpack --config _scripts/webpack.botGuardScript.config.js",
     "postinstall": "run-s --silent patch-shaka",
     "release": "run-s test build",
-    "ci": "yarn install --silent --frozen-lockfile --network-concurrency 1"
+    "ci": "yarn install --silent --network-concurrency 1"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
