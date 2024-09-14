@@ -299,6 +299,8 @@ const state = {
   settingsSectionSortEnabled: false,
   fetchSubscriptionsAutomatically: true,
   settingsPassword: '',
+  returnYouTubeDislikesUrl: 'https://ryd-proxy.kavin.rocks',
+  useReturnYouTubeDislikes: false,
   useDeArrowTitles: false,
   useDeArrowThumbnails: false,
   deArrowThumbnailGeneratorUrl: 'https://dearrow-thumb.ajay.app',
