@@ -26,7 +26,7 @@
           <div
             v-if="useReturnYoutubeDislikes"
             class="likeBar"
-            :style="{ background: `linear-gradient(to right, var(--accent-color) ${likePercentageRatio}%, #9E9E9E ${likePercentageRatio}%` }"
+            :style="{ background: `linear-gradient(to right, #F44336 ${likePercentageRatio}%, #9E9E9E ${likePercentageRatio}%` }"
           />
           <div>
             <span class="likeCount"><font-awesome-icon :icon="['fas', 'thumbs-up']" /> {{ parsedLikeCount }}</span>

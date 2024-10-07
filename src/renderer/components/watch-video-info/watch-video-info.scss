@@ -100,15 +100,22 @@
     }
 
     .likeBar {
-      border-radius: 4px;
-      block-size: 8px;
-      margin-block-end: 4px;
+      border-radius: 1.5px;
+      block-size: 3px;
+      margin-block-end: 10px;
+      inline-size: 200px;
     }
 
     .likeCount {
-      margin-inline-end: 0;
-      display: flex;
+      display: inline;
       gap: 3px;
+      margin-inline: 0 auto;
+    }
+
+    .dislikeCount {
+      display: inline;
+      gap: 3px;
+      margin-inline: auto 0;
     }
   }
 
