@@ -149,7 +149,7 @@
   overflow: hidden;
 
   /* copied from .shaka-scrim-container */
-  transition: opacity cubic-bezier(0.4, 0, 0.6, 1) 0.6s;
+  transition: opacity cubic-bezier(0.4, 0, 0.6, 1) 100ms;
 }
 
 :global(body[dir='rtl'] .playerFullscreenTitleOverlay) {
@@ -219,5 +219,20 @@
 :deep(.shaka-play-button) {
   padding: 3%;
   background-color: rgba(255 255 255 / 60%);
+}
+
+:deep(.shaka-controls-button-panel),
+:deep(.shaka-statistics-container),
+:deep(.shaka-ad-statistics-container),
+:deep(.shaka-scrim-container),
+:deep(.shaka-play-button),
+:deep(.shaka-seek-bar-container),
+:deep(.shaka-overflow-menu),
+:deep(.shaka-settings-menu) {
+  transition: opacity cubic-bezier(0.4, 0, 0.6, 1) 100ms;
+}
+
+:deep(.shaka-text-container) {
+  transition-delay: 100ms;
 }
 /* stylelint-enable liberty/use-logical-spec */
