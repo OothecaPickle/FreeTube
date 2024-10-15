@@ -144,6 +144,11 @@ export default defineComponent({
           title: this.$t('Settings.Password Settings.Password Settings'),
           icon: 'key'
         },
+        {
+          type: 'ryd-settings',
+          title: this.$t('Settings.Return YouTube Dislikes Settings.Return YouTube Dislikes Settings'),
+          icon: 'thumbs-down'
+        },
       ]
       return settingsComponentsData
     },
