@@ -810,10 +810,7 @@ export default defineComponent({
           contextMenuElements: ['ft_stats'],
           enableTooltips: true,
           seekBarColors: {
-            played: 'var(--primary-color)'
-          },
-          volumeBarColors: {
-            level: 'var(--primary-color)'
+            played: 'var(--red-500)'
           },
 
           // these have their own watchers
