@@ -5147,9 +5147,9 @@ http-proxy-agent@^7.0.0:
     debug "^4.3.4"
 
 http-proxy-middleware@^2.0.3:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-2.0.6.tgz#e1a4dd6979572c7ab5a4e4b55095d1f32a74963f"
-  integrity sha512-ya/UeJ6HVBYxrgYotAZo1KvPWlgB48kUJLDePFeneHsVujFaW5WNj2NgWCAE//B1Dl02BIfYlpNgBy8Kf8Rjmw==
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-2.0.7.tgz#915f236d92ae98ef48278a95dedf17e991936ec6"
+  integrity sha512-fgVY8AV7qU7z/MmXJ/rxwbrtQH4jBQ9m7kp3llF0liB7glmFeVZFBepQb32T3y8n8k2+AEYuMPCpinYW+/CuRA==
   dependencies:
     "@types/http-proxy" "^1.17.8"
     http-proxy "^1.18.1"
@@ -7990,10 +7990,10 @@ setprototypeof@1.2.0:
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.2.0.tgz#66c9a24a73f9fc28cbe66b09fed3d33dcaf1b424"
   integrity sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==
 
-shaka-player@^4.11.9-cursorfix:
-  version "4.11.9-cursorfix"
-  resolved "https://github.com/OothecaPickle/shaka-player/releases/download/v4.11.9-cursorfix-tag/shaka-player-4.11.9-cursorfix.tgz#ba809c288d84e02aeef7aa6417b1e8f59c5f4189"
-  integrity sha512-+M6uSHNUDnib/VsYyxR9W16ezCxEQvNITEOz8lX8NgGjWROayFia4vZ2EnmSNsCcwaarTVcLy/BFyRqLy2l2Bg==
+shaka-player@^4.11.10:
+  version "4.11.10"
+  resolved "https://registry.yarnpkg.com/shaka-player/-/shaka-player-4.11.10.tgz#b6d9f2cc9a6f614a97c55db949f9f5dacf5f777e"
+  integrity sha512-IJ9BlV5npvsDemHSNNGNwrXMPcfCllAZ237KXFkwt265vVnT/FZnDuJtoNvCx8yrvp+FQnZuSEXZDUkW+tbPOA==
   dependencies:
     eme-encryption-scheme-polyfill "^2.1.5"
 
