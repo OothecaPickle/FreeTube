@@ -763,7 +763,6 @@ function runApp() {
     // If called multiple times
     // Duplicate menu items will be added
     if (replaceMainWindow) {
-
       setMenu()
     }
 
