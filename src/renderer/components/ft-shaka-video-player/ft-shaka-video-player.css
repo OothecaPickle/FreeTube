@@ -41,15 +41,6 @@
   /* Place the seek bar above the controls (the default is below) */
   display: flex;
   flex-direction: column-reverse;
-
-  /* remove some bottom padding since the seek bar is above */
-  padding-bottom: 0;
-  width: 100%;
-}
-
-/* increase height of captions since we remove the padding-bottom below the seekbar */
-:deep(.shaka-controls-container[shown='true']~.shaka-text-container) {
-  bottom: 12.5%;
 }
 
 .sixteenByNine {
@@ -216,14 +207,20 @@
   :deep(.playerFullscreenTitleOverlay) {
     font-size: large;
   }
+}
 
+@media only screen and (width >= 1000px) {
   :deep(.shaka-bottom-controls) {
-    padding-bottom: 2.5%;
-    width: 96%;
+    /* remove some bottom padding since the seek bar is above */
+    padding-bottom: 0;
+
+    /* make seekbar take full width on non-mobile devices */
+    width: 100%;
   }
 
+  /* increase height of captions area since we remove the padding-bottom below the seekbar */
   :deep(.shaka-controls-container[shown='true']~.shaka-text-container) {
-    bottom: 15%;
+    bottom: 12.5%;
   }
 }
 
