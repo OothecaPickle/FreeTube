@@ -47,6 +47,11 @@
   width: 100%;
 }
 
+/* increase height of captions since we remove the padding-bottom below the seekbar */
+:deep(.shaka-controls-container[shown='true']~.shaka-text-container) {
+  bottom: 12.5%;
+}
+
 .sixteenByNine {
   aspect-ratio: 16 / 9;
 }
@@ -217,6 +222,9 @@
     width: 96%;
   }
 
+  :deep(.shaka-controls-container[shown='true']~.shaka-text-container) {
+    bottom: 15%;
+  }
 }
 
 @media only screen and (width <=1350px) {
