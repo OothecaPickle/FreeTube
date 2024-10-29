@@ -41,6 +41,10 @@
   /* Place the seek bar above the controls (the default is below) */
   display: flex;
   flex-direction: column-reverse;
+
+  /* remove some bottom padding since the seek bar is above */
+  padding-bottom: 0;
+  width: 100%;
 }
 
 .sixteenByNine {
@@ -207,6 +211,12 @@
   :deep(.playerFullscreenTitleOverlay) {
     font-size: large;
   }
+
+  :deep(.shaka-bottom-controls) {
+    padding-bottom: 2.5%;
+    width: 96%;
+  }
+
 }
 
 @media only screen and (width <=1350px) {
