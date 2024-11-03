@@ -455,7 +455,7 @@ function runApp() {
           requestHeaders.Authorization = invidiousAuthorization.authorization
         }
       }
-
+       
       callback({ requestHeaders })
     })
 
@@ -466,7 +466,7 @@ function runApp() {
       if (responseHeaders) {
         delete responseHeaders['set-cookie']
       }
-
+       
       callback({ responseHeaders })
     })
 

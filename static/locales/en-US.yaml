@@ -336,10 +336,10 @@ Settings:
       Pastel Pink: Pastel Pink
       Hot Pink: Hot Pink
       Nordic: Nordic
-      Solarized Dark: Solarized Dark
-      Solarized Light: Solarized Light
       Gruvbox Dark: Gruvbox Dark
       Gruvbox Light: Gruvbox Light
+      Solarized Dark: Solarized Dark
+      Solarized Light: Solarized Light
     Main Color Theme:
       Main Color Theme: Main Color Theme
       Red: Red
@@ -379,6 +379,16 @@ Settings:
       Catppuccin Mocha Sapphire: Catppuccin Mocha Sapphire
       Catppuccin Mocha Blue: Catppuccin Mocha Blue
       Catppuccin Mocha Lavender: Catppuccin Mocha Lavender
+      Gruvbox Dark Green: Gruvbox Dark Green
+      Gruvbox Dark Yellow: Gruvbox Dark Yellow
+      Gruvbox Dark Blue: Gruvbox Dark Blue
+      Gruvbox Dark Purple: Gruvbox Dark Purple
+      Gruvbox Dark Aqua: Gruvbox Dark Aqua
+      Gruvbox Dark Orange: Gruvbox Dark Orange
+      Gruvbox Light Red: Gruvbox Light Red
+      Gruvbox Light Blue: Gruvbox Light Blue
+      Gruvbox Light Purple: Gruvbox Light Purple
+      Gruvbox Light Orange: Gruvbox Light Orange
       Solarized Yellow: Solarized Yellow
       Solarized Orange: Solarized Orange
       Solarized Red: Solarized Red
@@ -387,13 +397,6 @@ Settings:
       Solarized Blue: Solarized Blue
       Solarized Cyan: Solarized Cyan
       Solarized Green: Solarized Green
-      Gruvbox Red: Gruvbox Red
-      Gruvbox Green: Gruvbox Green
-      Gruvbox Yellow: Gruvbox Yellow
-      Gruvbox Blue: Gruvbox Blue
-      Gruvbox Purple: Gruvbox Purple
-      Gruvbox Aqua: Gruvbox Aqua
-      Gruvbox Orange: Gruvbox Orange
     Secondary Color Theme: Secondary Color Theme
         #* Main Color Theme
   Player Settings:
