@@ -550,15 +550,15 @@ export async function getLocalArtistTopicChannelReleasesContinuation(channel, co
  * @param {boolean} onlyIdNameThumbnail
  */
 export function parseLocalChannelHeader(channel, onlyIdNameThumbnail = false) {
-  /** @type {string=} */
+  /** @type {string?} */
   let id
   /** @type {string} */
   let name
-  /** @type {string=} */
+  /** @type {string?} */
   let thumbnailUrl
-  /** @type {string=} */
+  /** @type {string?} */
   let bannerUrl
-  /** @type {string=} */
+  /** @type {string?} */
   let subscriberText
   /** @type {string[]} */
   const tags = []
@@ -766,7 +766,7 @@ export function parseLocalChannelShorts(shorts, channelId, channelName) {
 /**
  * @param {import('youtubei.js').YTNodes.Playlist|import('youtubei.js').YTNodes.GridPlaylist|import('youtubei.js').YTNodes.LockupView} playlist
  * @param {string} channelId
- * @param {string} chanelName
+ * @param {string} channelName
  */
 export function parseLocalListPlaylist(playlist, channelId = undefined, channelName = undefined) {
   if (playlist.type === 'LockupView') {
@@ -1073,20 +1073,20 @@ function parseListItem(item) {
         handle = channel.subscriber_count.text
 
         if (!channel.video_count.isEmpty()) {
-          subscribers = channel.video_count.text
+          subscribers = parseLocalSubscriberCount(channel.video_count.text)
         }
       } else {
         videos = extractNumberFromString(channel.video_count.text)
 
         if (!channel.subscriber_count.isEmpty()) {
-          subscribers = channel.subscriber_count.text
+          subscribers = parseLocalSubscriberCount(channel.subscriber_count.text)
         }
       }
 
       return {
         type: 'channel',
         dataSource: 'local',
-        thumbnail: channel.author.best_thumbnail?.url,
+        thumbnail: channel.author.best_thumbnail?.url.replace(/^\/\//, 'https://'),
         name: channel.author.name,
         id: channel.author.id,
         subscribers,
