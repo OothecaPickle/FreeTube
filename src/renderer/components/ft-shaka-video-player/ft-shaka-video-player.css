@@ -282,4 +282,8 @@
 :deep(.shaka-text-container) {
   transition-delay: 100ms;
 }
+
+:deep(.material-icons-round) {
+  font-size: 22px;
+}
 /* stylelint-enable liberty/use-logical-spec */
