@@ -1530,6 +1530,7 @@ it can be safely elided. This looks quite pleasant on this theme. */
   --accent-color-opacity1: rgb(204 36 29 / 4%);
   --accent-color-opacity2: rgb(204 36 29 / 12%);
   --accent-color-opacity3: rgb(204 36 29 / 16%);
+  --accent-color-opacity4: rgb(204 36 29 / 24%);
 }
 
 .secGruvboxLightBlue {
@@ -1541,6 +1542,7 @@ it can be safely elided. This looks quite pleasant on this theme. */
   --accent-color-opacity1: rgb(69 133 136 / 4%);
   --accent-color-opacity2: rgb(69 133 136 / 12%);
   --accent-color-opacity3: rgb(69 133 136 / 16%);
+  --accent-color-opacity4: rgb(69 133 136 / 24%);
 }
 
 .secGruvboxLightPurple {
@@ -1552,6 +1554,7 @@ it can be safely elided. This looks quite pleasant on this theme. */
   --accent-color-opacity1: rgb(177 98 134 / 4%);
   --accent-color-opacity2: rgb(177 98 134 / 12%);
   --accent-color-opacity3: rgb(177 98 134 / 16%);
+  --accent-color-opacity4: rgb(177 98 134 / 24%);
 }
 
 .secGruvboxLightOrange {
@@ -1563,28 +1566,26 @@ it can be safely elided. This looks quite pleasant on this theme. */
   --accent-color-opacity1: rgb(214 93 14 / 4%);
   --accent-color-opacity2: rgb(214 93 14 / 12%);
   --accent-color-opacity3: rgb(214 93 14 / 16%);
+  --accent-color-opacity4: rgb(214 93 14 / 24%);
 }
 
+.secGruvboxLightOrange,
+.secGruvboxLightRed,
+.secGruvboxLightBlue,
+.secGruvboxLightPurple {
+  --text-with-accent-color: #fbf1c7;
+}
+
+.secGruvboxDarkGreen,
 .secGruvboxDarkYellow,
-.secGruvboxDarkBlue,
-.secGruvboxDarkPurple,
 .secGruvboxDarkAqua,
 .secGruvboxDarkOrange {
   --text-with-accent-color: #3c3836;
 }
 
-.secGruvboxDarkGreen,
-.secGruvboxDarkAqua {
-  --text-with-accent-color: #1d2021;
-}
-
-.secGruvboxDarkOrange,
-.secGruvboxDarkPurple,
 .secGruvboxDarkBlue,
-.secGruvboxLightOrange,
-.secGruvboxLightBlue,
-.secGruvboxLightPurple {
-  --text-with-accent-color: #0d1011;
+.secGruvboxDarkPurple {
+  --text-with-accent-color: #1d2021;
 }
 
 
