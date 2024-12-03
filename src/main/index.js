@@ -1422,6 +1422,7 @@ function runApp() {
   app.on('window-all-closed', () => {
     // Clean up resources (datastores' compaction + Electron cache and storage data clearing)
     cleanUpResources().finally(() => {
+      mainWindow = 'all-windows-closed'
       if (process.platform !== 'darwin') {
         app.quit()
       }
@@ -1487,7 +1488,14 @@ function runApp() {
   app.on('open-url', (event, url) => {
     event.preventDefault()
 
-    if (mainWindow && mainWindow.webContents) {
+    if (mainWindow === 'all-windows-closed') {
+      app.once('browser-window-created', (_, mainWindow) => {
+        mainWindow.webContents.once('did-finish-load', () => {
+          setTimeout(function() { mainWindow.webContents.send(IpcChannels.OPEN_URL, baseUrl(url), { isLaunchLink: true }) }, 1000)
+        })
+      })
+      createWindow()
+    } else if (mainWindow && mainWindow.webContents) {
       mainWindow.webContents.send(IpcChannels.OPEN_URL, baseUrl(url))
     } else {
       startupUrl = baseUrl(url)
