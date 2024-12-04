@@ -259,6 +259,7 @@ function runApp() {
         if (mainWindow && mainWindow.webContents) {
           if (mainWindow.isMinimized()) mainWindow.restore()
           mainWindow.focus()
+          app.focus({ steal: true })
 
           if (url) mainWindow.webContents.send(IpcChannels.OPEN_URL, url)
         } else {
@@ -633,7 +634,7 @@ function runApp() {
     {
       replaceMainWindow = true,
       windowStartupUrl = null,
-      showWindowNow = false,
+      showWindowNow = true,
       searchQueryText = null
     } = { }) {
     // Syncing new window background to theme choice.
