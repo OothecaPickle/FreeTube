@@ -256,15 +256,15 @@ function runApp() {
       // Someone tried to run a second instance, we should focus our window
       if (typeof commandLine !== 'undefined') {
         const url = getLinkUrl(commandLine)
-        if (mainWindow === 'all-windows-closed') {
-          if (url) macOSnewURLWindow(url)
-          createWindow()
-        } else if (mainWindow && mainWindow.webContents) {
-          if (mainWindow.isMinimized()) mainWindow.restore()
-          mainWindow.focus()
+        if (url) {
+          if (mainWindow && mainWindow.webContents) {
+            if (mainWindow.isMinimized()) mainWindow.restore()
+            mainWindow.focus()
 
-          if (url) {
             mainWindow.webContents.send(IpcChannels.OPEN_URL, url)
+          } else {
+            startupUrl = url
+            createWindow()
           }
         }
       }
@@ -834,10 +834,11 @@ function runApp() {
     })
   }
 
-  ipcMain.once(IpcChannels.APP_READY, () => {
+  ipcMain.on(IpcChannels.APP_READY, () => {
     if (startupUrl) {
       mainWindow.webContents.send(IpcChannels.OPEN_URL, startupUrl, { isLaunchLink: true })
     }
+    startupUrl = null
   })
 
   function relaunch() {
@@ -1427,7 +1428,7 @@ function runApp() {
   app.on('window-all-closed', () => {
     // Clean up resources (datastores' compaction + Electron cache and storage data clearing)
     cleanUpResources().finally(() => {
-      mainWindow = 'all-windows-closed'
+      mainWindow = null
       if (process.platform !== 'darwin') {
         app.quit()
       }
@@ -1493,13 +1494,11 @@ function runApp() {
   app.on('open-url', (event, url) => {
     event.preventDefault()
 
-    if (mainWindow === 'all-windows-closed') {
-      macOSnewURLWindow(baseUrl(url))
-      createWindow()
-    } else if (mainWindow && mainWindow.webContents) {
+    if (mainWindow && mainWindow.webContents) {
       mainWindow.webContents.send(IpcChannels.OPEN_URL, baseUrl(url))
     } else {
       startupUrl = baseUrl(url)
+      if (app.isReady()) createWindow()
     }
   })
 
@@ -1537,15 +1536,6 @@ function runApp() {
     } else {
       return null
     }
-  }
-
-  function macOSnewURLWindow(url) {
-    app.once('browser-window-created', (_, mainWindow) => {
-      mainWindow.webContents.once('did-finish-load', () => {
-        // A timeout here is necessary or the new window won't receive the URL
-        setTimeout(function() { mainWindow.webContents.send(IpcChannels.OPEN_URL, url, { isLaunchLink: true }) }, 1000)
-      })
-    })
   }
 
   /*
