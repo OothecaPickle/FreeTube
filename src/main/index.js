@@ -276,6 +276,7 @@ function runApp() {
             // Just focus the main window (instead of starting a new instance)
             if (mainWindow.isMinimized()) mainWindow.restore()
             mainWindow.focus()
+            app.focus({ steal: true })
 
             if (url) mainWindow.webContents.send(IpcChannels.OPEN_URL, url)
           }
@@ -638,7 +639,7 @@ function runApp() {
     {
       replaceMainWindow = true,
       windowStartupUrl = null,
-      showWindowNow = false,
+      showWindowNow = true,
       searchQueryText = null
     } = { }) {
     // Syncing new window background to theme choice.
