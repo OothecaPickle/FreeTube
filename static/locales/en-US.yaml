@@ -29,6 +29,7 @@ Minimize: Minimize
 Close: Close
 Back: Back
 Forward: Forward
+Right-click or hold to see history: Right-click or hold to see history
 Open New Window: Open New Window
 Go to page: Go to {page}
 Close Banner: Close Banner
@@ -851,6 +852,9 @@ Video:
   Published on: Published on
   Streamed on: Streamed on
   Started streaming on: Started streaming on
+  DeArrow:
+    Show Original Details: Show Original Details
+    Show Modified Details: Show Modified Details
   Sponsor Block category:
     sponsor: Sponsor
     intro: Intro
