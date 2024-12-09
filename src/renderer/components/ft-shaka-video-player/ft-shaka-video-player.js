@@ -122,7 +122,7 @@ export default defineComponent({
     vrProjection: {
       type: String,
       default: null
-    }
+    },
   },
   emits: [
     'error',
@@ -243,6 +243,12 @@ export default defineComponent({
     /** @type {import('vue').ComputedRef<number>} */
     const defaultSkipInterval = computed(() => {
       return store.getters.getDefaultSkipInterval
+    })
+
+    watch(defaultSkipInterval, (newValue) => {
+      ui.configure({
+        tapSeekDistance: newValue
+      })
     })
 
     /** @type {import('vue').ComputedRef<number | 'auto'>} */
@@ -836,6 +842,7 @@ export default defineComponent({
           addBigPlayButton: displayVideoPlayButton.value,
           enableFullscreenOnRotation: enterFullscreenOnDisplayRotate.value,
           playbackRates: playbackRates.value,
+          tapSeekDistance: defaultSkipInterval.value,
 
           // we have our own ones (shaka-player's ones are quite limited)
           enableKeyboardPlaybackControls: false,
@@ -1176,7 +1183,8 @@ export default defineComponent({
           if (url.hostname.endsWith('.youtube.com') && url.pathname === '/api/timedtext' &&
             url.searchParams.get('caps') === 'asr' && url.searchParams.get('kind') === 'asr' && url.searchParams.get('fmt') === 'vtt') {
             const stringBody = new TextDecoder().decode(response.data)
-            const cleaned = stringBody.replaceAll(/ align:start position:0%$/gm, '')
+            // position:0% for LTR text and position:100% for RTL text
+            const cleaned = stringBody.replaceAll(/ align:start position:(?:10)?0%$/gm, '')
 
             response.data = new TextEncoder().encode(cleaned).buffer
           }
@@ -1524,7 +1532,8 @@ export default defineComponent({
 
       const format = screenshotFormat.value
       const mimeType = `image/${format === 'jpg' ? 'jpeg' : format}`
-      const imageQuality = format === 'jpg' ? screenshotQuality.value / 100 : 1
+      // imageQuality is ignored for pngs, so it is still okay to pass the quality value
+      const imageQuality = screenshotQuality.value / 100
 
       let filename
       try {
@@ -2473,7 +2482,8 @@ export default defineComponent({
                 const response = await fetch(caption.url)
                 let text = await response.text()
 
-                text = text.replaceAll(/ align:start position:0%$/gm, '')
+                // position:0% for LTR text and position:100% for RTL text
+                text = text.replaceAll(/ align:start position:(?:10)?0%$/gm, '')
 
                 const url = `data:${caption.mimeType};charset=utf-8,${encodeURIComponent(text)}`
 

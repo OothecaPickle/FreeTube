@@ -252,6 +252,17 @@
   :deep(.shaka-controls-container[shown='true']~.shaka-text-container) {
     bottom: 12.5%;
   }
+
+  :deep(.shaka-controls-button-panel>button) {
+    height: 40px;
+    line-height: 0.5;
+  }
+
+  :deep(.shaka-tooltips-on button:active::after),
+  :deep(.shaka-tooltips-on button:focus-visible::after),
+  :deep(.shaka-tooltips-on button:hover::after) {
+    margin-bottom: 8px;
+  }
 }
 
 @media only screen and (width <=1350px) {

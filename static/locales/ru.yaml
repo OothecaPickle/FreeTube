@@ -297,6 +297,8 @@ Settings:
     Auto Load Next Page:
       Label: Авто-загрузка следующей страницы
       Tooltip: Автоматическая загрузка дополнительных страниц и комментариев.
+    Open Deep Links In New Window: Открыть URL-адреса, переданные в FreeTube, в новом
+      окне
   Theme Settings:
     Theme Settings: 'Внешний вид'
     Match Top Bar with Main Color: 'Использовать основной цвет к верхней панели'
@@ -439,8 +441,6 @@ Settings:
     Hide Videos on Watch: 'Скрывать видео после просмотра'
     Fetch Feeds from RSS: Получать ленты из RSS
     Fetch Automatically: Автоматически получать ленту
-    Only Show Latest Video for Each Channel: Показывать только последние видео для
-      каждого канала
     Confirm Before Unsubscribing: Подтвердить, прежде чем отписаться
 
   Privacy Settings:
@@ -870,6 +870,9 @@ Video:
   AgeRestricted: Видео с возрастными ограничениями нельзя смотреть через FreeTube,
     так как для этого требуется вход в Google и использование подтвержденной учетной
     записи YouTube.
+  DeArrow:
+    Show Original Details: Показать стандартные свойства
+    Show Modified Details: Показать модифицированные свойства
 Videos:
   #& Sort By
   Sort By:
@@ -1200,3 +1203,4 @@ Keys:
   arrowleft: Стрелка влево
   arrowright: Стрелка вправо
   arrowup: Стрелка вверх
+Right-click or hold to see history: ПКМ или зажми для просмотра истории

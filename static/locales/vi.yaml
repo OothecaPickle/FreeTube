@@ -422,8 +422,6 @@ Settings:
     Hide Videos on Watch: 'Ẩn video khi đã xem'
     Fetch Feeds from RSS: Cập nhật bảng tin qua RSS
     Fetch Automatically: Tự động làm mới bảng tin
-    Only Show Latest Video for Each Channel: Chỉ hiện video mới nhất cho mỗi kênh
-
     Confirm Before Unsubscribing: Nhắc xác nhận trước khi hủy đăng ký
   Data Settings:
     How do I import my subscriptions?: Làm sao để tôi nhập đăng ký?
@@ -1044,8 +1042,8 @@ Tooltips:
     Skip by Scrolling Over Video Player: Sử dụng con lăn chuột để bỏ qua video, kiểu
       MPV.
   External Player Settings:
-    Custom External Player Arguments: Bất kỳ tham số dòng lệnh tùy chỉnh nào,
-      bạn muốn được chuyển đến trình phát bên ngoài.
+    Custom External Player Arguments: Bất kỳ tham số dòng lệnh tùy chỉnh nào, bạn
+      muốn được chuyển đến trình phát bên ngoài.
     Custom External Player Executable: Theo mặc định, FreeTube sẽ giả định rằng trình
       phát bên ngoài đã chọn có thể được tìm thấy thông qua biến môi trường PATH.
       Nếu cần, bạn có thể đặt một đường dẫn tuỳ chọn ở đây.

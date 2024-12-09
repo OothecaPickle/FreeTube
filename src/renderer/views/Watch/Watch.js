@@ -58,6 +58,8 @@ export default defineComponent({
   beforeRouteLeave: async function (to, from, next) {
     this.handleRouteChange()
     window.removeEventListener('beforeunload', this.handleWatchProgress)
+    document.removeEventListener('keydown', this.resetAutoplayInterruptionTimeout)
+    document.removeEventListener('click', this.resetAutoplayInterruptionTimeout)
 
     if (this.$refs.player) {
       await this.$refs.player.destroyPlayer()
@@ -120,6 +122,8 @@ export default defineComponent({
       playNextTimeout: null,
       playNextCountDownIntervalId: null,
       infoAreaSticky: true,
+      blockVideoAutoplay: false,
+      autoplayInterruptionTimeout: null,
 
       onMountedRun: false,
 
@@ -160,6 +164,9 @@ export default defineComponent({
     },
     proxyVideos: function () {
       return this.$store.getters.getProxyVideos
+    },
+    defaultAutoplayInterruptionIntervalHours: function () {
+      return this.$store.getters.getDefaultAutoplayInterruptionIntervalHours
     },
     defaultInterval: function () {
       return this.$store.getters.getDefaultInterval
@@ -325,7 +332,13 @@ export default defineComponent({
         this.getVideoInformationLocal()
       }
 
+      document.removeEventListener('keydown', this.resetAutoplayInterruptionTimeout)
+      document.removeEventListener('click', this.resetAutoplayInterruptionTimeout)
+      document.addEventListener('keydown', this.resetAutoplayInterruptionTimeout)
+      document.addEventListener('click', this.resetAutoplayInterruptionTimeout)
+
       window.addEventListener('beforeunload', this.handleWatchProgress)
+      this.resetAutoplayInterruptionTimeout()
     },
 
     changeTimestamp: function (timestamp) {
@@ -1248,6 +1261,18 @@ export default defineComponent({
         return
       }
 
+      if (this.blockVideoAutoplay) {
+        showToast(this.$t('Autoplay Interruption Timer',
+          this.defaultAutoplayInterruptionIntervalHours,
+          {
+            autoplayInterruptionIntervalHours: this.defaultAutoplayInterruptionIntervalHours
+          }),
+        3_600_000
+        )
+        this.resetAutoplayInterruptionTimeout()
+        return
+      }
+
       if (this.watchingPlaylist && this.getPlaylistPauseOnCurrent()) {
         this.disablePlaylistPauseOnCurrent()
         return
@@ -1652,6 +1677,12 @@ export default defineComponent({
 
       const playlist = this.selectedUserPlaylist
       this.updatePlaylistLastPlayedAt({ _id: playlist._id })
+    },
+
+    resetAutoplayInterruptionTimeout() {
+      clearTimeout(this.autoplayInterruptionTimeout)
+      this.autoplayInterruptionTimeout = setTimeout(() => { this.blockVideoAutoplay = true }, this.defaultAutoplayInterruptionIntervalHours * 3_600_000)
+      this.blockVideoAutoplay = false
     },
 
     ...mapActions([
