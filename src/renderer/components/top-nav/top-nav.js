@@ -8,7 +8,7 @@ import { IpcChannels, KeyboardShortcuts, MOBILE_WIDTH_THRESHOLD } from '../../..
 import { localizeAndAddKeyboardShortcutToActionTitle, openInternalPath } from '../../helpers/utils'
 import { translateWindowTitle } from '../../helpers/strings'
 import { clearLocalSearchSuggestionsSession, getLocalSearchSuggestions } from '../../helpers/api/local'
-import { invidiousAPICall } from '../../helpers/api/invidious'
+import { getInvidiousSearchSuggestions } from '../../helpers/api/invidious'
 
 export default defineComponent({
   name: 'TopNav',
@@ -310,15 +310,7 @@ export default defineComponent({
         return
       }
 
-      const searchPayload = {
-        resource: 'search/suggestions',
-        id: '',
-        params: {
-          q: query
-        }
-      }
-
-      invidiousAPICall(searchPayload).then((results) => {
+      getInvidiousSearchSuggestions(query).then((results) => {
         this.searchSuggestionsDataList = results.suggestions
       }).catch((err) => {
         console.error(err)
