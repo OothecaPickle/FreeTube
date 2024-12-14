@@ -116,7 +116,7 @@ async function getHashtag() {
   } else {
     await getInvidiousHashtag()
   }
-  store.commit('setAppTitle', `#${hashtag.value} - ${packageDetails.productName}`)
+  document.title = `${hashtag.value} - ${packageDetails.productName}`
 }
 
 /**

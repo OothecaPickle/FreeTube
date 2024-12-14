@@ -960,43 +960,6 @@ function runApp() {
     session.defaultSession.closeAllConnections()
   })
 
-  // #region navigation history
-
-  const NAV_HISTORY_DISPLAY_LIMIT = 15
-  // Math.trunc but with a bitwise OR so that it can be calcuated at build time and the number inlined
-  const HALF_OF_NAV_HISTORY_DISPLAY_LIMIT = (NAV_HISTORY_DISPLAY_LIMIT / 2) | 0
-
-  ipcMain.handle(IpcChannels.GET_NAVIGATION_HISTORY, ({ sender }) => {
-    const activeIndex = sender.navigationHistory.getActiveIndex()
-    const length = sender.navigationHistory.length()
-
-    let end
-
-    if (activeIndex < HALF_OF_NAV_HISTORY_DISPLAY_LIMIT) {
-      end = Math.min(length - 1, NAV_HISTORY_DISPLAY_LIMIT - 1)
-    } else if (length - activeIndex < HALF_OF_NAV_HISTORY_DISPLAY_LIMIT + 1) {
-      end = length - 1
-    } else {
-      end = activeIndex + HALF_OF_NAV_HISTORY_DISPLAY_LIMIT
-    }
-
-    const dropdownOptions = []
-
-    for (let index = end; index >= Math.max(0, end + 1 - NAV_HISTORY_DISPLAY_LIMIT); --index) {
-      const routeLabel = sender.navigationHistory.getEntryAtIndex(index)?.title
-
-      dropdownOptions.push({
-        label: routeLabel,
-        value: index - activeIndex,
-        active: index === activeIndex
-      })
-    }
-
-    return dropdownOptions
-  })
-
-  // #endregion navigation history
-
   ipcMain.handle(IpcChannels.OPEN_EXTERNAL_LINK, (_, url) => {
     if (typeof url === 'string') {
       let parsedURL

@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import { mapActions, mapMutations } from 'vuex'
 import FtInput from '../ft-input/ft-input.vue'
 import FtProfileSelector from '../ft-profile-selector/ft-profile-selector.vue'
-import FtIconButton from '../ft-icon-button/ft-icon-button.vue'
+import debounce from 'lodash.debounce'
 
 import { IpcChannels, KeyboardShortcuts, MIXED_SEARCH_HISTORY_ENTRIES_DISPLAY_LIMIT, MOBILE_WIDTH_THRESHOLD, SEARCH_RESULTS_DISPLAY_LIMIT } from '../../../constants'
 import { debounce, localizeAndAddKeyboardShortcutToActionTitle, openInternalPath } from '../../helpers/utils'
@@ -13,7 +13,6 @@ import { getInvidiousSearchSuggestions } from '../../helpers/api/invidious'
 export default defineComponent({
   name: 'TopNav',
   components: {
-    FtIconButton,
     FtInput,
     FtProfileSelector
   },
@@ -32,10 +31,6 @@ export default defineComponent({
       showSearchContainer: true,
       isArrowBackwardDisabled,
       isArrowForwardDisabled,
-      navigationHistoryDropdownActiveEntry: null,
-      navigationHistoryDropdownOptions: [],
-      isLoadingNavigationHistory: false,
-      pendingNavigationHistoryLabel: null,
       searchSuggestionsDataList: [],
       lastSuggestionQuery: ''
     }
@@ -91,14 +86,6 @@ export default defineComponent({
       return this.$store.getters.getSearchFilterValueChanged
     },
 
-    navigationHistoryAddendum: function () {
-      if (this.navigationHistoryDropdownOptions.length === 0) {
-        return ''
-      }
-
-      return '\n' + this.$t('Right-click or hold to see history')
-    },
-
     forwardText: function () {
       const shortcuts = process.platform === 'darwin'
         ? [
@@ -112,7 +99,7 @@ export default defineComponent({
       return localizeAndAddKeyboardShortcutToActionTitle(
         this.$t('Forward'),
         shortcuts,
-      ) + this.navigationHistoryAddendum
+      )
     },
 
     backwardText: function () {
@@ -128,7 +115,7 @@ export default defineComponent({
       return localizeAndAddKeyboardShortcutToActionTitle(
         this.$t('Back'),
         shortcuts,
-      ) + this.navigationHistoryAddendum
+      )
     },
 
     newWindowText: function () {
@@ -189,12 +176,11 @@ export default defineComponent({
   },
   watch: {
     $route: function () {
-      this.setNavigationHistoryDropdownOptions()
       if ('navigation' in window) {
         this.isArrowForwardDisabled = !window.navigation.canGoForward
         this.isArrowBackwardDisabled = !window.navigation.canGoBack
       }
-    },
+    }
   },
   mounted: function () {
     let previousWidth = window.innerWidth
@@ -411,46 +397,12 @@ export default defineComponent({
       this.showSearchContainer = !this.showSearchContainer
     },
 
-    setNavigationHistoryDropdownOptions: async function() {
-      if (process.env.IS_ELECTRON) {
-        this.isLoadingNavigationHistory = true
-        const { ipcRenderer } = require('electron')
-
-        const dropdownOptions = await ipcRenderer.invoke(IpcChannels.GET_NAVIGATION_HISTORY)
-
-        const activeEntry = dropdownOptions.find(option => option.active)
-
-        if (this.pendingNavigationHistoryLabel) {
-          activeEntry.label = this.pendingNavigationHistoryLabel
-        }
-
-        this.navigationHistoryDropdownOptions = dropdownOptions
-        this.navigationHistoryDropdownActiveEntry = activeEntry
-        this.isLoadingNavigationHistory = false
-      }
+    historyBack: function () {
+      this.$router.back()
     },
 
-    goToOffset: function (offset) {
-      // no point navigating to the current route
-      if (offset !== 0) {
-        this.$router.go(offset)
-      }
-    },
-
-    historyBack: function (offset) {
-      if (offset != null) {
-        this.goToOffset(offset)
-      } else {
-        this.$router.back()
-      }
-    },
-
-    historyForward: function (offset) {
-      if (offset != null) {
-        this.goToOffset(offset)
-      } else {
-        this.$router.forward()
-      }
+    historyForward: function () {
+      this.$router.forward()
     },
 
     toggleSideNav: function () {
@@ -471,18 +423,6 @@ export default defineComponent({
     updateSearchInputText: function (text) {
       this.$refs.searchInput.updateInputData(text)
     },
-    setActiveNavigationHistoryEntryTitle(value) {
-      if (this.isLoadingNavigationHistory) {
-        this.pendingNavigationHistoryLabel = value
-      } else if (this.navigationHistoryDropdownActiveEntry) {
-        this.navigationHistoryDropdownActiveEntry.label = value
-      }
-    },
-    removeSearchHistoryEntryInDbAndCache(query) {
-      this.removeSearchHistoryEntry(query)
-      this.removeFromSessionSearchHistory(query)
-    },
-
     ...mapActions([
       'getYoutubeUrlInfo',
       'removeSearchHistoryEntry',

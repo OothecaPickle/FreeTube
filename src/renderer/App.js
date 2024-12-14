@@ -102,7 +102,6 @@ export default defineComponent({
     externalPlayer: function () {
       return this.$store.getters.getExternalPlayer
     },
-
     defaultInvidiousInstance: function () {
       return this.$store.getters.getDefaultInvidiousInstance
     },
@@ -150,10 +149,6 @@ export default defineComponent({
       return this.$store.getters.getExternalLinkHandling
     },
 
-    appTitle: function () {
-      return this.$store.getters.getAppTitle
-    },
-
     openDeepLinksInNewWindow: function () {
       return this.$store.getters.getOpenDeepLinksInNewWindow
     }
@@ -168,11 +163,10 @@ export default defineComponent({
     secColor: 'checkThemeSettings',
 
     locale: 'setLocale',
-
-    appTitle: 'setDocumentTitle'
   },
   created () {
     this.checkThemeSettings()
+    this.setWindowTitle()
     this.setLocale()
   },
   mounted: function () {
@@ -219,16 +213,10 @@ export default defineComponent({
         if (this.$router.currentRoute.path === '/') {
           this.$router.replace({ path: this.landingPage })
         }
-
-        this.setWindowTitle()
       })
     })
   },
   methods: {
-    setDocumentTitle: function(value) {
-      document.title = value
-      this.$nextTick(() => this.$refs.topNav?.setActiveNavigationHistoryEntryTitle(value))
-    },
     checkThemeSettings: function () {
       const theme = {
         baseTheme: this.baseTheme || 'dark',
@@ -562,7 +550,7 @@ export default defineComponent({
 
     setWindowTitle: function() {
       if (this.windowTitle !== null) {
-        this.setAppTitle(this.windowTitle)
+        document.title = this.windowTitle
       }
     },
 

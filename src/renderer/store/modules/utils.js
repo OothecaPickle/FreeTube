@@ -66,7 +66,6 @@ const state = {
     shorts: false,
     communityPosts: false,
   },
-  appTitle: ''
 }
 
 const getters = {
@@ -186,9 +185,6 @@ const getters = {
   getSubscriptionForCommunityPostsFirstAutoFetchRun (state) {
     return state.subscriptionFirstAutoFetchRunData.communityPosts === true
   },
-  getAppTitle (state) {
-    return state.appTitle
-  }
 }
 
 const actions = {
@@ -987,11 +983,6 @@ const mutations = {
     state.externalPlayerCmdArguments = value
   },
 
-  // Use this to set the app title / document.title
-  setAppTitle (state, value) {
-    state.appTitle = value
-  },
-
   setSubscriptionForVideosFirstAutoFetchRun (state) {
     state.subscriptionFirstAutoFetchRunData.videos = true
   },
@@ -1003,7 +994,7 @@ const mutations = {
   },
   setSubscriptionForCommunityPostsFirstAutoFetchRun (state) {
     state.subscriptionFirstAutoFetchRunData.communityPosts = true
-  }
+  },
 }
 
 export default {

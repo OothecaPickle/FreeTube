@@ -1706,7 +1706,7 @@ export default defineComponent({
     },
 
     updateTitle: function () {
-      this.setAppTitle(`${this.videoTitle} - ${packageDetails.productName}`)
+      document.title = `${this.videoTitle} - ${packageDetails.productName}`
     },
 
     isHiddenVideo: function (forbiddenTitles, channelsHidden, video) {

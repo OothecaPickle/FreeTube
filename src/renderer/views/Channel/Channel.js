@@ -576,7 +576,7 @@ export default defineComponent({
           this.channelName = channelName
           this.thumbnailUrl = channelThumbnailUrl
 
-          this.setAppTitle(`${channelName} - ${packageDetails.productName}`)
+          document.title = `${channelName} - ${packageDetails.productName}`
 
           this.updateSubscriptionDetails({ channelThumbnailUrl, channelName, channelId: this.id })
 
@@ -620,7 +620,7 @@ export default defineComponent({
         }
         this.tags = tags
 
-        this.setAppTitle(`${channelName} - ${packageDetails.productName}`)
+        document.title = `${channelName} - ${packageDetails.productName}`
 
         if (subscriberText) {
           const subCount = parseLocalSubscriberCount(subscriberText)
@@ -1082,7 +1082,7 @@ export default defineComponent({
         const channelName = response.author
         const channelId = response.authorId
         this.channelName = channelName
-        this.setAppTitle(`${this.channelName} - ${packageDetails.productName}`)
+        document.title = `${this.channelName} - ${packageDetails.productName}`
         this.id = channelId
         this.isFamilyFriendly = response.isFamilyFriendly
         this.subCount = response.subCount
