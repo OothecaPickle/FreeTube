@@ -60,7 +60,6 @@ const state = {
     shorts: false,
     communityPosts: false,
   },
-  appTitle: ''
 }
 
 const getters = {
@@ -176,9 +175,6 @@ const getters = {
   getSubscriptionForCommunityPostsFirstAutoFetchRun (state) {
     return state.subscriptionFirstAutoFetchRunData.communityPosts === true
   },
-  getAppTitle (state) {
-    return state.appTitle
-  }
 }
 
 const actions = {
@@ -799,11 +795,6 @@ const actions = {
       ipcRenderer.send(IpcChannels.OPEN_IN_EXTERNAL_PLAYER, { executable, args })
     }
   },
-
-  // Use this to set the app title / document.title
-  setAppTitle({ commit }, title) {
-    commit('setAppTitle', title)
-  }
 }
 
 const mutations = {
@@ -968,10 +959,6 @@ const mutations = {
     state.externalPlayerCmdArguments = value
   },
 
-  setAppTitle (state, value) {
-    state.appTitle = value
-  },
-
   setSubscriptionForVideosFirstAutoFetchRun (state) {
     state.subscriptionFirstAutoFetchRunData.videos = true
   },
@@ -983,7 +970,7 @@ const mutations = {
   },
   setSubscriptionForCommunityPostsFirstAutoFetchRun (state) {
     state.subscriptionFirstAutoFetchRunData.communityPosts = true
-  }
+  },
 }
 
 export default {

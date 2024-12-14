@@ -108,7 +108,7 @@ async function getHashtag() {
   } else {
     await getInvidiousHashtag(hashtagInRoute)
   }
-  store.dispatch('setAppTitle', `${hashtag.value} - ${packageDetails.productName}`)
+  document.title = `${hashtag.value} - ${packageDetails.productName}`
 }
 
 /**
