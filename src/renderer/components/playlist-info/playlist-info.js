@@ -11,7 +11,8 @@ import {
   formatNumber,
   showToast,
   getTodayDateStrLocalTimezone,
-  writeFileWithPicker,
+  writeFileFromDialog,
+  showSaveDialog,
 } from '../../helpers/utils'
 import debounce from 'lodash.debounce'
 import thumbnailPlaceholder from '../../assets/img/thumbnail_placeholder.svg'
@@ -428,28 +429,34 @@ export default defineComponent({
       const title = this.selectedUserPlaylist.playlistName.replaceAll(' ', '_').replaceAll(/["%*/:<>?\\|]/g, '_')
       const exportFileName = 'freetube-playlist-' + title + '-' + dateStr + '.db'
 
+      const options = {
+        defaultPath: exportFileName,
+        filters: [
+          {
+            name: 'Database File',
+            extensions: ['db']
+          }
+        ]
+      }
+
       const data = JSON.stringify(this.selectedUserPlaylist) + '\n'
 
       // See data-settings.js `promptAndWriteToFile`
+      const response = await showSaveDialog(options)
+      if (response.canceled || response.filePath === '') {
+        // User canceled the save dialog
+        return
+      }
 
       try {
-        const response = await writeFileWithPicker(
-          exportFileName,
-          data,
-          this.$t('Settings.Data Settings.Playlist File'),
-          'application/x-freetube-db',
-          '.db',
-          'single-playlist-export',
-          'downloads'
-        )
-
-        if (response) {
-          showToast(this.$t('User Playlists.The playlist has been successfully exported'))
-        }
-      } catch (error) {
+        await writeFileFromDialog(response, data)
+      } catch (writeErr) {
         const message = this.$t('Settings.Data Settings.Unable to write file')
-        showToast(`${message}: ${error}`)
+        showToast(`${message}: ${writeErr}`)
+        return
       }
+
+      showToast(this.$t('User Playlists.The playlist has been successfully exported'))
     },
 
     exitEditMode: function () {
