@@ -17,6 +17,7 @@ import PasswordSettings from '../../components/PasswordSettings/PasswordSettings
 import PasswordDialog from '../../components/PasswordDialog/PasswordDialog.vue'
 import RydSettings from '../../components/ryd-settings/ryd-settings.vue'
 import FtToggleSwitch from '../../components/ft-toggle-switch/ft-toggle-switch.vue'
+import FtButton from '../../components/ft-button/ft-button.vue'
 import FtSettingsMenu from '../../components/FtSettingsMenu/FtSettingsMenu.vue'
 
 const ACTIVE_CLASS_NAME = 'active'
@@ -37,6 +38,7 @@ export default defineComponent({
     'password-settings': PasswordSettings,
     'password-dialog': PasswordDialog,
     'ryd-settings': RydSettings,
+    'ft-button': FtButton,
     'ft-toggle-switch': FtToggleSwitch,
     'ft-settings-menu': FtSettingsMenu,
     ...(process.env.IS_ELECTRON
@@ -50,6 +52,7 @@ export default defineComponent({
   },
   data: function () {
     return {
+      usingElectron: process.env.IS_ELECTRON,
       isInDesktopView: true,
       settingsSectionTypeOpenInMobile: null,
       unlocked: false
@@ -268,6 +271,7 @@ export default defineComponent({
     },
 
     ...mapActions([
+      'showKeyboardShortcutPrompt',
       'updateSettingsSectionSortEnabled'
     ])
   }
