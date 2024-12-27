@@ -134,7 +134,8 @@ export default defineComponent({
       customErrorIcon: null,
       videoGenreIsMusic: false,
       /** @type {Date|null} */
-      streamingDataExpiryDate: null
+      streamingDataExpiryDate: null,
+      currentPlaybackRate: null,
     }
   },
   computed: {
@@ -308,6 +309,7 @@ export default defineComponent({
     this.activeFormat = this.defaultVideoFormat
 
     this.checkIfTimestamp()
+    this.currentPlaybackRate = this.$store.getters.getDefaultPlayback
   },
   mounted: function () {
     this.onMountedDependOnLocalStateLoading()
@@ -1679,6 +1681,10 @@ export default defineComponent({
       clearTimeout(this.autoplayInterruptionTimeout)
       this.autoplayInterruptionTimeout = setTimeout(() => { this.blockVideoAutoplay = true }, this.defaultAutoplayInterruptionIntervalHours * 3_600_000)
       this.blockVideoAutoplay = false
+    },
+
+    updatePlaybackRate(newRate) {
+      this.currentPlaybackRate = newRate
     },
 
     ...mapActions([
