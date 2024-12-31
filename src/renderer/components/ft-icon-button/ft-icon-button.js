@@ -121,7 +121,7 @@ export default defineComponent({
     handleDropdownFocusOut: function () {
       if (this.mouseDownOnIcon) {
         this.mouseDownOnIcon = false
-      } else if (!this.$refs.dropdown.matches(':focus-within')) {
+      } else if (!this.useModal && !this.$refs.dropdown.matches(':focus-within')) {
         this.dropdownShown = false
       }
     },
