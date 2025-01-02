@@ -32,17 +32,27 @@ Forward: 'Framover'
 # Anything shared among components / views should be put here
 Global:
   Videos: 'Videoer'
-  Shorts: Kortvideoer
-  Live: Direkte
-  Community: Gemenskap
+  Shorts: Shorts-videoer
+  Live: Direktesendinger
+  Community: Fellesskap
+  Sort By: Sorter etter
 
 # Search Bar
+  Counts:
+    Subscriber Count: 1 abonnent | {count} abonnenter
+    Watching Count: 1 seer | {count} seere
+    Channel Count: 1 kanal | {count} kanaler
+    Comment Count: 1 kommentar | {count} kommentarer
+    Video Count: 1 video | {count} videoer
+    View Count: 1 visning | {count} visninger
+    Like Count: 1 liker | {count} liker
+  Input Tags:
+    Length Requirement: Etiketten må minst være {number} tegn lang.
 Search / Go to URL: 'Søk/gå til nettadresse'
   # In Filter Button
 Search Filters:
   Search Filters: 'Søkefiltre'
   Sort By:
-    Sort By: 'Sorter etter'
     Most Relevant: 'Mest relevant'
     Rating: 'Vurdering'
     Upload Date: 'Opplastingsdato'
@@ -106,6 +116,93 @@ User Playlists:
   Your Playlists: 'Dine spillelister'
   Empty Search Message: Ingen videoer i denne spillelisten samsvarer med søket ditt
   Search bar placeholder: Søk i spilleliste
+  SinglePlaylistView:
+    Toast:
+      This playlist does not exist: Denne spillelisten finnes ikke
+      This video cannot be moved down.: Denne videoen kan ikke bli flyttet ned.
+      Video has been removed: Videoen har blitt fjernet
+      There were no videos to remove.: Det var ingen videoer å fjerne
+      There was an issue with updating this playlist.: Det oppstod et problem ved
+        oppdateringen av denne spillelisten.
+      "{videoCount} video(s) have been removed": 1 video har blitt fjernet | {videoCount}
+        videoer har blitt fjernet
+      Playlist has been updated.: Spilleliste har blitt endret
+      There was a problem with removing this video: Det oppstod et problem ved fjerningen
+        av denne videoen
+      This video cannot be moved up.: Denne videoen kan ikke bli flyttet opp.
+      Playlist {playlistName} has been deleted.: Spillelisten {playlistName} har blitt
+        fjernet.
+      This playlist is protected and cannot be removed.: Denne spillelisten er beskyttet,
+        og kan derfor ikke bli fjernet.
+      Some videos in the playlist are not loaded yet. Click here to copy anyway.: Noen
+        av videoene i spillelisten har ikke blitt lastet inn skikkelig, enda. Trykk
+        her for å kopiere, uansett.
+      Playlist name cannot be empty. Please input a name.: Spillelisten må ha et navn.
+        Vennligst gi den et navn.
+    Search for Videos: Søk etter videoer
+  AddVideoPrompt:
+    Allow Adding Duplicate Video(s): Tillat å legge til dupliserte videoer
+    Search in Playlists: Søk i spillelister
+    Save: Lagre
+    N playlists selected: '{playlistCount} valgt'
+    "{videoCount}/{totalVideoCount} Videos Will Be Added": '{videoCount}/{totalVideoCount}
+      videoer vil bli lagt til'
+    Toast:
+      You haven't selected any playlist yet.: Du har ikke valgt noen spillelister
+        enda.
+      "{videoCount} video(s) added to 1 playlist": 1 video lagt til 1 spilleliste | {videoCount} videoer lagt til 1 spilleliste
+  Cancel: Avbryt
+  Add to Playlist: Legg til spilleliste
+  This playlist currently has no videos.: Denne spillelisten har ikke noen videoer
+    for øyeblikket.
+  Export Playlist: Eksporter denne spillelisten
+  Sort By:
+    EarliestCreatedFirst: Tidligst opprettet
+    EarliestUpdatedFirst: Tidligst endret
+    LatestPlayedFirst: Sist spilt av
+    EarliestPlayedFirst: Tidligst spilt av
+    LatestUpdatedFirst: Nylig endret
+    NameAscending: A-Å
+    NameDescending: Å-A
+    LatestCreatedFirst: Nylig opprettet
+  Add to Favorites: Legg til {playlistName}
+  Move Video Up: Flytt video opp
+  Move Video Down: Flytt video ned
+  Playlist Description: Beskrivelse på spilleliste
+  Save Changes: Lagre endringer
+  Copy Playlist: Kopier spilleliste
+  Playlist Name: Navn på spilleliste
+  Remove Watched Videos: Fjern sette videoer
+  Playlists with Matching Videos: Spillelister med like videoer
+  Create New Playlist: Opprett ny spilleliste
+  Remove from Favorites: Fjern fra {playlistName}
+  The playlist has been successfully exported: Spillelisten ble eksportert
+  Delete Playlist: Fjern spilleliste
+  CreatePlaylistPrompt:
+    Create: Opprett
+    New Playlist Name: Nytt navn på spilleliste
+    Toast:
+      There was an issue with creating the playlist.: Det oppstod et problem ved opprettelsen
+        av spillelisten.
+      There is already a playlist with this name. Please pick a different name.: Det
+        finnes allerede en spilleliste med det navnet. Vennligst velg et annet navn.
+      Playlist {playlistName} has been successfully created.: Spillelisten {playlistName}
+        har blitt opprettet.
+  Edit Playlist Info: Endre informasjon til spilleliste
+  Remove Duplicate Videos: Fjern duplikatvideoer
+  Remove from Playlist: Fjern fra spilleliste
+  You have no playlists. Click on the create new playlist button to create a new one.: Du
+    har ingen spillelister. Trykk på plusstegnet for å opprette en ny en.
+  Are you sure you want to delete this playlist? This cannot be undone: Er du sikker
+    på at du vil fjerne denne spillelisten? Dette kan ikke bli omgjort.
+  Are you sure you want to remove {playlistItemCount} duplicate videos from this playlist? This cannot be undone: Er
+    du sikker på at du vil fjerne en duplikatvideo fra denne spillelisten? Dette kan
+    ikke bli omgjort. Er du sikker på at du vil fjerne {playlistItemCount} duplikate
+    videoer fra denne spillelisten? Denne kan ikke bli omgjort.
+  Are you sure you want to remove {playlistItemCount} watched videos from this playlist? This cannot be undone: Er
+    du sikker på at du vil fjerne 1 sett video fra denne spillelisten? Dette kan ikke
+    bli omgjort. | Er du sikker på at du vil fjerne {playlistItemCount} sette videoer
+    fra denne spillelisten? Dette kan ikke bli omgjort.
 History:
   # On History Page
   History: 'Historikk'
@@ -470,7 +567,6 @@ Channel:
   Unsubscribe: 'Opphev abonnement'
   Search Channel: 'Søk i kanal'
   Your search results have returned 0 results: 'Søktet ditt ga 0 resultater'
-  Sort By: 'Sorter etter'
   Videos:
     Videos: 'Videoer'
     This channel does not currently have any videos: 'Kanalen har ingen videoer enda'
@@ -665,7 +761,6 @@ Comments:
   No more comments available: Ingen flere kommentarer tilgjengelig
   Newest first: Nyeste først
   There are no more comments for this video: Ingen flere kommentarer for denne videoen
-  Sort by: Sorter etter
   Top comments: Toppkommentarer
   Show More Replies: Vis flere svar
   From {channelName}: Fra {channelName}

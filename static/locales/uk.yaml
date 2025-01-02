@@ -35,6 +35,7 @@ Global:
   Shorts: Shorts
   Live: Наживо
   Community: Спільнота
+  Sort By: Сортувати за
 
   Counts:
     Video Count: 1 відео | {count} відео
@@ -58,7 +59,6 @@ Search / Go to URL: 'Пошук / Перейти по URL'
 Search Filters:
   Search Filters: 'Фільтри пошуку'
   Sort By:
-    Sort By: 'Впорядковувати за'
     Most Relevant: 'Найвідповідніші'
     Rating: 'Рейтинг'
     Upload Date: 'Час вивантаження'
@@ -156,6 +156,100 @@ User Playlists:
   Playlist Name: Назва списку відтворення
   Edit Playlist Info: Змінити інформацію списку відтворення
   Remove Watched Videos: Вилучити з переглянутих відео
+  Delete Playlist: Видалити добірку
+  Sort By:
+    LatestPlayedFirst: Нещодавно переглянуті
+    EarliestPlayedFirst: Найдавніше переглянуті
+    NameAscending: А-Я
+    LatestCreatedFirst: Нещодавно створено
+    EarliestCreatedFirst: Створено найраніше
+    NameDescending: Я-А
+    EarliestUpdatedFirst: Найстаріші оновлення
+    LatestUpdatedFirst: Останні оновлення
+  SinglePlaylistView:
+    Toast:
+      This playlist is now used for quick bookmark: Ця добірка тепер використовується
+        для швидких закладок
+      This playlist is now used for quick bookmark instead of {oldPlaylistName}. Click here to undo: Ця
+        добірка тепер використовується для швидких закладок замість {oldPlaylistName}.
+        Натисніть тут, щоб скасувати
+      This video cannot be moved up.: Це відео не можна перемістити вгору.
+      This video cannot be moved down.: Це відео не можна перемістити вниз.
+      Video has been removed: Відео було видалено
+      This playlist is already being used for quick bookmark.: Ця добірка вже використовується
+        для швидких закладок.
+      There was a problem with removing this video: Сталася помилка під час видалення
+        цього відео
+      Reverted to use {oldPlaylistName} for quick bookmark: Повернуто до використання
+        {oldPlaylistName} для швидких закладок
+      This playlist is protected and cannot be removed.: Цю добірку захищено, тому
+        її не можна видалити.
+      "{videoCount} video(s) have been removed": 1 відео було видалено | {videoCount}
+        відео було видалено
+      Playlist {playlistName} has been deleted.: Добірку {playlistName} було видалено.
+      This playlist does not exist: Ця добірка не існує
+      This playlist has a video with a duration error: Ця добірка містить принаймні
+        одне відео, яке не має тривалості, тому воно буде відсортоване так, ніби його
+        тривалість дорівнює нулю.
+      Some videos in the playlist are not loaded yet. Click here to copy anyway.: Деякі
+        відео в добірці ще не завантажено. Натисніть тут, щоб все одно скопіювати.
+      Playlist name cannot be empty. Please input a name.: Назва добірки не може бути
+        порожньою. Будь ласка, введіть назву.
+      Playlist has been updated.: Добірка була оновлена.
+      There was an issue with updating this playlist.: Сталася помилка при оновленні
+        цієї добірки.
+      There were no videos to remove.: Відео для видалення не знайдено.
+      Playlist {playlistName} is the new quick bookmark playlist.: Добірка {playlistName}
+        тепер є новою швидкою закладкою.
+    Search for Videos: Пошук відео
+  The playlist has been successfully exported: Добірку успішно експортовано
+  Export Playlist: Експортувати цю добірку
+  Are you sure you want to remove {playlistItemCount} watched videos from this playlist? This cannot be undone: Ви
+    впевнені, що хочете видалити 1 переглянуте відео з цієї добірки? Цю дію не можна
+    скасувати. | Ви впевнені, що хочете видалити {playlistItemCount} переглянутих
+    відео з цієї добірки? Цю дію не можна скасувати.
+  Are you sure you want to remove {playlistItemCount} duplicate videos from this playlist? This cannot be undone: Ви
+    впевнені, що хочете видалити 1 дубльоване відео з цієї добірки? Цю дію не можна
+    скасувати. | Ви впевнені, що хочете видалити {playlistItemCount} дубльованих відео
+    з цієї добірки? Цю дію не можна скасувати.
+  Are you sure you want to delete this playlist? This cannot be undone: Ви впевнені,
+    що хочете видалити цю добірку? Це неможливо скасувати.
+  Enable Quick Bookmark With This Playlist: Увімкнути швидке додавання в закладки
+    для цієї добірки
+  Quick Bookmark Enabled: Швидке додавання в закладки увімкнено
+  Cannot delete the quick bookmark target playlist.: Неможливо видалити добірку швидких
+    закладок.
+  Playlists with Matching Videos: Добірки з відповідними відео
+  Remove Duplicate Videos: Видалити дублікати відео
+  AddVideoPrompt:
+    Save: Зберегти
+    Search in Playlists: Пошук в добірках
+    Allow Adding Duplicate Video(s): Дозволити додавати дублікатів відео
+    Added {count} Times: Вже додано | Додано {count} разів
+    "{videoCount}/{totalVideoCount} Videos Will Be Added": '{videoCount}/{totalVideoCount}
+      Відео буде додано'
+    "{videoCount}/{totalVideoCount} Videos Already Added": '{videoCount}/{totalVideoCount}
+      Відео вже додано'
+    Toast:
+      "{videoCount} video(s) added to 1 playlist": 1 відео додано до 1 добірки | {videoCount}
+        відео додано до 1 добірки
+      "{videoCount} video(s) added to {playlistCount} playlists": 1 відео додано до
+        {playlistCount} добірок | {videoCount} відео додано до {playlistCount} добірок
+      You haven't selected any playlist yet.: Ви ще не вибрали жодної добірки.
+    N playlists selected: '{playlistCount} вибрано'
+    Select a playlist to add your N videos to: Виберіть добірку, до якої ви хочете
+      додати своє відео | Виберіть добірку, до якої ви хочете додати свої {videoCount}
+      відео
+  CreatePlaylistPrompt:
+    Create: Створити
+    Toast:
+      Playlist {playlistName} has been successfully created.: Добірку {playlistName}
+        успішно створено.
+      There was an issue with creating the playlist.: Сталася помилка під час створення
+        добірки.
+      There is already a playlist with this name. Please pick a different name.: Вже
+        існує добірка з такою назвою. Будь ласка, виберіть іншу назву.
+    New Playlist Name: Нова назва добірки
 History:
   # On History Page
   History: 'Історія'
@@ -586,7 +680,6 @@ Channel:
   Added channel to your subscriptions: 'Додано канал до підписок'
   Search Channel: 'Шукати на каналі'
   Your search results have returned 0 results: 'Пошук дав 0 результатів'
-  Sort By: 'Впорядковувати за'
   Videos:
     Videos: 'Відео'
     This channel does not currently have any videos: 'Наразі на цьому каналі немає
@@ -738,6 +831,18 @@ Playlist:
 #* Published
 #& Views
   Playlist: Список відтворення
+  Sort By:
+    VideoDurationDescending: Тривалість (спочатку найдовші)
+    Custom: Користувацький
+    VideoTitleDescending: Заголовок (Я-А)
+    VideoTitleAscending: Заголовок (А-Я)
+    DateAddedOldest: Спочатку найстаріші добавлені
+    AuthorAscending: Автор (А-Я)
+    AuthorDescending: Автор (Я-А)
+    VideoDurationAscending: Тривалість (спочатку найкоротші)
+    DateAddedNewest: Спочатку новіші добавлені
+    PublishedNewest: Останні опубліковані першими
+    PublishedOldest: Найдавніші опубліковані першими
 Change Format:
   Change Media Formats: 'Зміна форматів відео'
   Use Dash Formats: 'Використовувати формати DASH'
@@ -776,7 +881,6 @@ Comments:
   There are no more comments for this video: 'Більше немає коментарів до цього відео'
   Show Comments: 'Показати коментарі'
   Hide Comments: 'Сховати коментарі'
-  Sort by: 'Впорядковувати за'
   Top comments: 'Найпопулярніші коментарі'
   Newest first: 'Спочатку новіші'
   # Context: View 10 Replies, View 1 Reply

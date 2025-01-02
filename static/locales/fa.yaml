@@ -35,7 +35,6 @@ Search / Go to URL: 'جست و جو / برو به لینک'
 Search Filters:
   Search Filters: 'فیلترهای جست و جو'
   Sort By:
-    Sort By: 'مرتب کن بر اساس'
     Most Relevant: 'مرتبط ترین'
     Rating: 'امتیاز'
     Upload Date: 'زمان بارگذاری'
@@ -136,6 +135,78 @@ User Playlists:
     Toast:
       Video has been removed: ویدیو حذف شده است
       There was a problem with removing this video: در حذف این ویدیو مشکلی وجود داشت
+      This playlist is now used for quick bookmark: این لیست پخش اکنون برای نشانک
+        سریع استفاده می‌شود
+      Some videos in the playlist are not loaded yet. Click here to copy anyway.: برخی
+        از ویدیوها در لیست پخش هنوز بارگیری نشده اند. به هر حال برای کپی اینجا کلیک
+        کنید.
+      "{videoCount} video(s) have been removed": 1 ویدئو حذف شد | {videoCount} ویدیو
+        حذف شد
+      Playlist {playlistName} has been deleted.: فهرست پخش {playlistName} حذف شد.
+      Playlist {playlistName} is the new quick bookmark playlist.: لیست پخش {playlistName}
+        یک فهرست پخش نشانک سریع جدید است.
+      This video cannot be moved up.: این ویدئو را نمی‌توان به بالا منتقل کرد.
+      This playlist is now used for quick bookmark instead of {oldPlaylistName}. Click here to undo: این
+        لیست پخش اکنون برای نشانک سریع به جای {oldPlaylistName} استفاده می شود. برای
+        لغو اینجا را کلیک کنید
+      This playlist is already being used for quick bookmark.: این لیست پخش در حال
+        حاضر برای نشانک سریع استفاده می شود.
+      Playlist name cannot be empty. Please input a name.: نام لیست پخش نمی تواند
+        خالی باشد. لطفا یک نام وارد کنید.
+      There were no videos to remove.: هیچ ویدیویی برای حذف وجود نداشت.
+      This playlist is protected and cannot be removed.: این لیست پخش محافظت می‌شود
+        و نمی‌توان آن را حذف کرد.
+      This video cannot be moved down.: این ویدئو را نمی‌توان به پایین منتقل کرد.
+      Playlist has been updated.: لیست پخش به روز شد.
+      There was an issue with updating this playlist.: مشکلی در به‌روزرسانی این لیست
+        پخش وجود داشت.
+      This playlist does not exist: این لیست پخش وجود ندارد
+      Reverted to use {oldPlaylistName} for quick bookmark: به استفاده از {oldPlaylistName}
+        برای نشانک‌گذاری سریع بازگردد
+      This playlist has a video with a duration error: این لیست پخش شامل حداقل یک
+        ویدیو است که مدت زمان ندارد، به گونه‌ای مرتب می‌شود که گویی مدت زمان آنها
+        صفر است.
+    Search for Videos: جستجوی ویدئوها
+  Sort By:
+    EarliestUpdatedFirst: اولین به روز شده
+    LatestUpdatedFirst: به تازگی به روز شده
+    NameAscending: آ-ی
+    NameDescending: ی-آ
+    LatestCreatedFirst: به تازگی ایجاد شده
+    LatestPlayedFirst: اخیراً پخش شده
+    EarliestPlayedFirst: اولین پخش شده
+    EarliestCreatedFirst: قدیمی ترین ایجاد شده
+  CreatePlaylistPrompt:
+    Toast:
+      Playlist {playlistName} has been successfully created.: لیست پخش {playlistName}
+        با موفقیت ایجاد شد.
+      There is already a playlist with this name. Please pick a different name.: از
+        قبل یک فهرست پخش با این نام وجود دارد. لطفا نام دیگری انتخاب کنید.
+      There was an issue with creating the playlist.: مشکلی در ایجاد لیست پخش وجود
+        داشت.
+    New Playlist Name: نام لیست پخش جدید
+    Create: ایجاد
+  You have no playlists. Click on the create new playlist button to create a new one.: شما
+    هیچ لیست پخشی ندارید. بر روی دکمه ایجاد لیست پخش جدید کلیک کنید تا لیست پخش جدیدی
+    ایجاد شود.
+  Export Playlist: صادر کردن این لیست پخش
+  The playlist has been successfully exported: لیست پخش با موفقیت صادر شد
+  Are you sure you want to remove {playlistItemCount} watched videos from this playlist? This cannot be undone: آیا
+    مطمئنید که می خواهید 1 ویدیوی تماشا شده را از این لیست پخش حذف کنید؟ این قابل
+    واگرد نیست. | آیا مطمئن هستید که می خواهید {playlistItemCount} ویدیو تماشا شده
+    را از این لیست پخش حذف کنید؟ این قابل واگرد نیست.
+  Cannot delete the quick bookmark target playlist.: نمی توان لیست پخش مورد نظر نشانک
+    سریع را حذف کرد.
+  Are you sure you want to delete this playlist? This cannot be undone: آیا مطمئن
+    هستید که می خواهید این لیست پخش را حذف کنید؟ این قابل واگرد نیست.
+  Are you sure you want to remove {playlistItemCount} duplicate videos from this playlist? This cannot be undone: آیا
+    مطمئنید که می‌خواهید 1 ویدیوی تکراری را از این فهرست پخش حذف کنید؟ این قابل واگرد
+    نیست. | آیا مطمئنید که می خواهید {playlistItemCount} ویدیو تکراری را از این لیست
+    پخش حذف کنید؟ این قابل واگرد نیست.
+  Copy Playlist: رونوشت لیست‌پخش
+  Enable Quick Bookmark With This Playlist: فعال کردن نشانک سریع با این لیست پخش
+  Quick Bookmark Enabled: نشانک سریع فعال شد
+  Delete Playlist: حذف لیست پخش
 History:
   # On History Page
   History: 'تاریخچه'
@@ -533,7 +604,6 @@ Channel:
   Unsubscribe: لغو اشتراک
   Your search results have returned 0 results: نتایج جستجوی شما 0 نتیجه برگردانده
     است
-  Sort By: مرتب سازی بر اساس
   Channel has been removed from your subscriptions: کانال از اشتراک های شما حذف شده
     است
   Added channel to your subscriptions: کانال به اشتراک های شما اضافه شد
@@ -618,6 +688,49 @@ Video:
   Video has been marked as watched: ویدیو به عنوان تماشا شده علامت گذاری شده است
   Mark As Watched: علامت گذاری به عنوان تماشا شده
   Video has been removed from your history: ویدیو از سابقه شما حذف شده است
+  Player:
+    You appear to be offline: به نظر می رسد آفلاین هستید.
+    Exit Theatre Mode: خروج از حالت تئاتر
+    Stats:
+      Video ID: 'شناسه ویدئو: {videoId}'
+      Media Formats: 'فرمت ویدئو: {formats}'
+      Stats: اطلاعات
+      Resolution: 'وضوح: {width}x{height}@{frameRate}'
+      Bandwidth: 'پهنای باند: {bandwidth} کیلوبیت‌بر‌ثانیه'
+      Player Dimensions: 'ابعاد پخش کننده: {width}x{height}'
+      Bitrate: 'نرخ بیت: {bitrate} کیلوبیت‌بر‌ثانیه'
+      Buffered: 'بافر: {bufferedPercentage}%'
+      Volume: 'صدا: {volumePercentage}%'
+      CodecAudio: 'کدک: {audioCodec} ({audioItag})'
+      Dropped Frames / Total Frames: 'فریم‌های رد شده: {droppedFrames} / مجموع فریم‌ها:
+        {totalFrames}'
+      CodecsVideoAudio: 'کدک‌ها: {videoCodec} ({videotag}) / {audioCodec} ({audioItag})'
+      CodecsVideoAudioNoItags: 'کدک‌ها: {videoCodec} / {audioCodec}'
+    Take Screenshot: گرفتن عکس صفحه
+    Show Stats: نمایش اطلاعات
+    Skipped segment: بخش {segmentCategory} رد شد
+    TranslatedCaptionTemplate: '{language} (ترجمه شده از "{originalLanguage}")'
+    Hide Stats: مخفی کردن اطلاعات
+    Full Window: تمام‌صفحه
+    Exit Full Window: خروج از تمام‌صفحه
+    Playback will resume automatically when your connection comes back: با بازگشت
+      اتصال شما، پخش به طور خودکار از سر گرفته می شود.
+    Audio Tracks: تراک صوتی
+    Theatre Mode: حالت تئاتر
+  Hide Channel: مخفی‌کردن کانال
+  Pause on Current Video: توقف در ویدیو فعلی
+  IP block: YouTube آدرس نشانی شما را از تماشای ویدیو مسدود کرده است. لطفاً سعی کنید
+    به فیلترشکن یا پروکسی دیگری بروید.
+  More Options: گزینه‌های بیشتر
+  Unhide Channel: نمایش کانال
+  Unlisted: بدون لیست
+  MembersOnly: ویدیوهای مختص اعضا را نمی‌توان با FreeTube تماشا کرد زیرا به ورود Google
+    و عضویت پولی در کانال آپلودکننده نیاز دارند.
+  AgeRestricted: ویدیوهای دارای محدودیت سنی را نمی‌توان با FreeTube تماشا کرد، زیرا
+    نیاز به ورود به سیستم Google و استفاده از یک حساب YouTube تأیید شده برای سن دارند.
+  DeArrow:
+    Show Original Details: نمایش جزئیات اصلی
+    Show Modified Details: نمایش جزئیات اصلاح شده
 Tooltips:
   General Settings:
     External Link Handling: "وقتی روی پیوندی که در FreeTube باز نمی شود، روی آن کلیک
@@ -727,6 +840,7 @@ Global:
   Videos: ویدیو
   Shorts: کوتاه
   Live: زنده
+  Sort By: مرتب‌کردن بر اساس
   Counts:
     Subscriber Count: ۱ دنبال کننده | {count} دنبال کننده
     View Count: ۱ بازدید | {count} بازدید
@@ -794,7 +908,6 @@ Comments:
   Load More Comments: بارگذاری نظرات بیشتر
   No more comments available: نظر دیگری در دسترس نیست
   There are no comments available for this video: هیچ نظری برای این ویدیو موجود نیست
-  Sort by: مرتب سازی بر اساس
   View: مشاهده
   Reply: پاسخ
   Comments: نظرات
@@ -882,6 +995,16 @@ Playlist:
   Last Updated On: آخرین بروز رسانی در تاریخ
   View Full Playlist: مشاهده لیست پخش کامل
   Playlist: فهرست پخش
+  Sort By:
+    VideoDurationDescending: مدت (اول طولانی‌ترین)
+    VideoDurationAscending: مدت (اول کوتاه ترین)
+    VideoTitleAscending: عنوان (آ-ی)
+    DateAddedNewest: آخرین اضافه شده در ابتدا
+    DateAddedOldest: اولین اضافه شده در ابتدا
+    AuthorDescending: نویسنده (ی-آ)
+    VideoTitleDescending: عنوان (ی-آ)
+    Custom: سفارشی
+    AuthorAscending: نویسنده (آ-ی)
 Mini Player: مینی پلیر
 Videos:
   Sort By:

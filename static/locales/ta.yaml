@@ -41,10 +41,11 @@ Are you sure you want to open this link?: ''
 # Global
 # Anything shared among components / views should be put here
 Global:
-  Videos: ''
-  Shorts: ''
-  Live: ''
-  Community: ''
+  Videos: 'வீடியோக்கள்'
+  Shorts: 'குறுக்குகள்'
+  Live: 'வாழ'
+  Community: 'சமூகம்'
+  Sort By: 'வரிசைப்படுத்தவும்'
   Counts:
     Video Count: ''
     Channel Count: ''
@@ -76,11 +77,10 @@ Search Listing:
 Search Filters:
   Search Filters: ''
   Sort By:
-    Sort By: ''
-    Most Relevant: ''
-    Rating: ''
-    Upload Date: ''
-    View Count: ''
+    Most Relevant: 'மிகவும் பொருத்தமானது'
+    Rating: 'செயல்வரம்பு'
+    Upload Date: 'பதிவேற்ற தேதி'
+    View Count: 'எண்ணிக்கை காண்க'
   Time:
     Time: ''
     Any Time: ''
@@ -195,10 +195,8 @@ User Playlists:
   Are you sure you want to delete this playlist? This cannot be undone: ''
 
   Sort By:
-    Sort By: ''
-
-    NameAscending: ''
-    NameDescending: ''
+    NameAscending: 'A-z'
+    NameDescending: 'Z-A.'
 
     LatestCreatedFirst: ''
     EarliestCreatedFirst: ''
@@ -675,18 +673,21 @@ Profile:
   Open Profile Dropdown: ''
 #On Channel Page
 Channel:
-  Subscribe: ''
-  Unsubscribe: ''
-  Channel has been removed from your subscriptions: ''
-  Removed subscription from {count} other channel(s): ''
-  Added channel to your subscriptions: ''
-  Search Channel: ''
-  Your search results have returned 0 results: ''
-  Sort By: ''
-  This channel does not exist: ''
-  This channel does not allow searching: ''
-  This channel is age-restricted and currently cannot be viewed in FreeTube.: ''
-  Channel Tabs: ''
+  Subscribe: 'குழுசேர்'
+  Unsubscribe: 'குழுவிலகவும்'
+  Channel has been removed from your subscriptions: 'உங்கள் சந்தாக்களிலிருந்து சேனல்
+    அகற்றப்பட்டுள்ளது'
+  Removed subscription from {count} other channel(s): '{count} பிற சேனல்களிலிருந்து
+    சந்தாவை அகற்று)'
+  Added channel to your subscriptions: 'உங்கள் சந்தாக்களில் சேனல் சேர்க்கப்பட்டது'
+  Search Channel: 'சேனல் தேடல்'
+  Your search results have returned 0 results: 'உங்கள் தேடல் முடிவுகள் 0 முடிவுகளைத்
+    தருகின்றன'
+  This channel does not exist: 'இந்த சேனல் இல்லை'
+  This channel does not allow searching: 'இந்த சேனல் தேடலை அனுமதிக்காது'
+  This channel is age-restricted and currently cannot be viewed in FreeTube.: 'இந்த
+    சேனல் வயதுக்கு தடை விதிக்கப்பட்டுள்ளது, தற்போது ஃப்ரீட்யூப்பில் பார்க்க முடியாது.'
+  Channel Tabs: 'சேனல் தாவல்கள்'
   Videos:
     Videos: ''
     This channel does not currently have any videos: ''
@@ -881,16 +882,15 @@ Playlist:
   View Full Playlist: ''
   Last Updated On: ''
   Sort By:
-    Sort By: ''
-    DateAddedNewest: ''
-    DateAddedOldest: ''
-    AuthorAscending: ''
-    AuthorDescending: ''
-    VideoTitleAscending: ''
-    VideoTitleDescending: ''
-    VideoDurationAscending: ''
-    VideoDurationDescending: ''
-    Custom: ''
+    DateAddedNewest: 'அண்மைக் கால சேர்க்கப்பட்டது முதலில்'
+    DateAddedOldest: 'ஆரம்பத்தில் முதலில் சேர்க்கப்பட்டது'
+    AuthorAscending: 'ஆசிரியர் (A-Z)'
+    AuthorDescending: 'ஆசிரியர் (Z-A)'
+    VideoTitleAscending: 'தலைப்பு (A-Z)'
+    VideoTitleDescending: 'தலைப்பு (Z-A)'
+    VideoDurationAscending: 'காலம் (குறுகிய முதல்)'
+    VideoDurationDescending: 'காலம் (முதல் முதல்)'
+    Custom: 'தனிப்பயன்'
 
 # On Video Watch Page
 #* Published
@@ -930,16 +930,15 @@ Chapters:
 
 Mini Player: ''
 Comments:
-  Comments: ''
-  Click to View Comments: ''
-  Getting comment replies, please wait: ''
-  There are no more comments for this video: ''
-  Show Comments: ''
-  Hide Comments: ''
-  Sort by: ''
-  Top comments: ''
-  Newest first: ''
-  View {replyCount} replies: ''
+  Comments: 'கருத்துகள்'
+  Click to View Comments: 'கருத்துகளைக் காண சொடுக்கு செய்க'
+  Getting comment replies, please wait: 'கருத்து பதில்களைப் பெறுதல், தயவுசெய்து காத்திருங்கள்'
+  There are no more comments for this video: 'இந்த வீடியோவுக்கு இனி கருத்துகள் இல்லை'
+  Show Comments: 'கருத்துகளைக் காட்டு'
+  Hide Comments: 'கருத்துகளை மறைக்கவும்'
+  Top comments: 'சிறந்த கருத்துகள்'
+  Newest first: 'புதிய முதல்'
+  View {replyCount} replies: '{replyCount} பதில்களைக் காண்க'
   # Context: View 10 Replies, View 1 Reply, View 1 Reply from Owner, View 2 Replies from Owner and others
   View: ''
   Hide: ''
