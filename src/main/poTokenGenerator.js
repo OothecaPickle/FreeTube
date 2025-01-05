@@ -1,4 +1,4 @@
-import { session, WebContentsView } from 'electron'
+import { session, BrowserView } from 'electron'
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 
@@ -53,7 +53,7 @@ export async function generatePoToken(videoId, visitorData, context, proxyUrl) {
     callback({ requestHeaders })
   })
 
-  const webContentsView = new WebContentsView({
+  const webContentsView = new BrowserView({
     webPreferences: {
       backgroundThrottling: false,
       safeDialogs: true,
