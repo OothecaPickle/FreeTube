@@ -1,6 +1,7 @@
 import { session, BrowserView } from 'electron'
 import { readFile } from 'fs/promises'
 import { join } from 'path'
+const crypto = require('node:crypto')
 
 /**
  * Generates a poToken (proof of origin token) using `bgutils-js`.
