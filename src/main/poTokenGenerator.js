@@ -1,4 +1,4 @@
-import { session, WebContentsView } from 'electron'
+import { session, BrowserView } from 'electron'
 import { readFile } from 'fs/promises'
 import { join } from 'path'
 const crypto = require('node:crypto')
@@ -29,7 +29,7 @@ export async function generatePoToken(visitorData) {
       .join(' ')
   )
 
-  const webContentsView = new WebContentsView({
+  const webContentsView = new BrowserView({
     webPreferences: {
       backgroundThrottling: false,
       safeDialogs: true,
