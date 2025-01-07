@@ -1,10 +1,10 @@
 import { defineComponent } from 'vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 import FtInput from '../ft-input/ft-input.vue'
 import FtProfileSelector from '../ft-profile-selector/ft-profile-selector.vue'
 import debounce from 'lodash.debounce'
 
-import { IpcChannels, KeyboardShortcuts, MOBILE_WIDTH_THRESHOLD } from '../../../constants'
+import { IpcChannels, KeyboardShortcuts, MIXED_SEARCH_HISTORY_ENTRIES_DISPLAY_LIMIT, MOBILE_WIDTH_THRESHOLD, SEARCH_RESULTS_DISPLAY_LIMIT } from '../../../constants'
 import { localizeAndAddKeyboardShortcutToActionTitle, openInternalPath } from '../../helpers/utils'
 import { translateWindowTitle } from '../../helpers/strings'
 import { clearLocalSearchSuggestionsSession, getLocalSearchSuggestions } from '../../helpers/api/local'
@@ -105,7 +105,56 @@ export default defineComponent({
         this.$t('Open New Window'),
         KeyboardShortcuts.APP.GENERAL.NEW_WINDOW
       )
-    }
+    },
+
+    usingOnlySearchHistoryResults: function () {
+      return this.lastSuggestionQuery === ''
+    },
+
+    latestMatchingSearchHistoryNames: function () {
+      return this.$store.getters.getLatestMatchingSearchHistoryNames(this.lastSuggestionQuery)
+        .slice(0, MIXED_SEARCH_HISTORY_ENTRIES_DISPLAY_LIMIT)
+    },
+
+    latestSearchHistoryNames: function () {
+      return this.$store.getters.getLatestSearchHistoryNames
+    },
+
+    activeDataList: function () {
+      // show latest search history when the search bar is empty
+      if (this.usingOnlySearchHistoryResults) {
+        return this.$store.getters.getLatestSearchHistoryNames
+      }
+
+      const searchResults = [...this.latestMatchingSearchHistoryNames]
+
+      if (this.enableSearchSuggestions) {
+        for (const searchSuggestion of this.searchSuggestionsDataList) {
+          // prevent duplicate results between search history entries and YT search suggestions
+          if (this.latestMatchingSearchHistoryNames.includes(searchSuggestion)) {
+            continue
+          }
+
+          searchResults.push(searchSuggestion)
+
+          if (searchResults.length === SEARCH_RESULTS_DISPLAY_LIMIT) {
+            break
+          }
+        }
+      }
+
+      return searchResults
+    },
+
+    activeDataListProperties: function () {
+      const searchHistoryEntriesCount = this.usingOnlySearchHistoryResults ? this.latestSearchHistoryNames.length : this.latestMatchingSearchHistoryNames.length
+      return this.activeDataList.map((_, i) => {
+        const isSearchHistoryEntry = i < searchHistoryEntriesCount
+        return isSearchHistoryEntry
+          ? { isRemoveable: true, iconName: 'clock-rotate-left' }
+          : { isRemoveable: false, iconName: 'magnifying-glass' }
+      })
+    },
   },
   watch: {
     $route: function () {
@@ -273,12 +322,15 @@ export default defineComponent({
     },
 
     getSearchSuggestionsDebounce: function (query) {
+      const trimmedQuery = query.trim()
+      if (trimmedQuery === this.lastSuggestionQuery) {
+        return
+      }
+
+      this.lastSuggestionQuery = trimmedQuery
+
       if (this.enableSearchSuggestions) {
-        const trimmedQuery = query.trim()
-        if (trimmedQuery !== this.lastSuggestionQuery) {
-          this.lastSuggestionQuery = trimmedQuery
-          this.debounceSearchResults(trimmedQuery)
-        }
+        this.debounceSearchResults(trimmedQuery)
       }
     },
 
@@ -353,9 +405,19 @@ export default defineComponent({
     updateSearchInputText: function (text) {
       this.$refs.searchInput.updateInputData(text)
     },
+    removeSearchHistoryEntryInDbAndCache(query) {
+      this.removeSearchHistoryEntry(query)
+      this.removeFromSessionSearchHistory(query)
+    },
+
     ...mapActions([
       'getYoutubeUrlInfo',
+      'removeSearchHistoryEntry',
       'showSearchFilters'
+    ]),
+
+    ...mapMutations([
+      'removeFromSessionSearchHistory'
     ])
   }
 })
