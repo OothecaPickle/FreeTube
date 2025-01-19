@@ -718,7 +718,6 @@ Video:
     Audio Tracks: تراک صوتی
     Theatre Mode: حالت تئاتر
   Hide Channel: مخفی‌کردن کانال
-  Pause on Current Video: توقف در ویدیو فعلی
   IP block: YouTube آدرس نشانی شما را از تماشای ویدیو مسدود کرده است. لطفاً سعی کنید
     به فیلترشکن یا پروکسی دیگری بروید.
   More Options: گزینه‌های بیشتر
@@ -1018,3 +1017,36 @@ Search Listing:
   Label:
     Subtitles: زیرنویس
 Close Banner: بستن بنر
+Age Restricted:
+  This video is age restricted: این ویدیو دارای محدودیت سنی است
+  This channel is age restricted: این کانال دارای محدودیت سنی می باشد
+Search character limit: عبارت جستجو از حد مجاز نویسه {searchCharacterLimit} فراتر
+  است
+Yes, Delete: بله حذف شود
+Yes, Restart: بله شروع دوباره
+Cancel: لغو
+Trimmed input must be at least N characters long: ورودی بریده شده باید حداقل 1 کاراکتر
+  طول داشته باشد | ورودی بریده شده باید حداقل {length} کاراکتر باشد
+Tag already exists: برچسب "{tagName}" از قبل وجود دارد
+checkmark: ✓
+Channel Unhidden: '{channel} از فیلتر کانال حذف شد'
+'Blocked opening potentially unsafe URL': 'باز کردن آدرس بالقوه ناامن مسدود شد: "{url}".'
+Channel Hidden: '{channel} به فیلتر کانال اضافه شد'
+Yes, Open Link: بله بازکردن پیوند
+KeyboardShortcutTemplate: '{label} ({shortcut})'
+Right-click or hold to see history: برای دیدن تاریخچه کلیک راست کرده یا نگه دارید
+Moments Ago: لحظاتی پیش
+Display Label: '{label}: {value}'
+Autoplay Interruption Timer: پخش خودکار به دلیل {autoplayInterruptionIntervalHours}
+  ساعت عدم فعالیت لغو شد
+shortcutJoinOperator: +
+Keys:
+  alt: Alt
+  ctrl: Ctrl
+  arrowdown: فلش پایین
+  arrowleft: فلش چپ
+  arrowright: ‌فلش راست
+  arrowup: فلش بالا
+Description:
+  Expand Description: '...بیشتر'
+  Collapse Description: نمایش کمتر

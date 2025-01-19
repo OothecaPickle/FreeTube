@@ -749,7 +749,6 @@ Video:
   Scroll to Bottom: 下までスクロール
   Upcoming: 近日公開
   'Live Chat is unavailable for this stream. It may have been disabled by the uploader.': この配信ではライブチャットは使用できません。配信者によって無効に設定されているようです。
-  Pause on Current Video: 現在の動画を一時停止
   Hide Channel: チャンネルを非表示
   Unhide Channel: チャンネルを表示
   More Options: その他の設定
@@ -785,12 +784,20 @@ Video:
   MembersOnly: メンバー限定動画は Google にログインし、投稿チャンネルに課金する必要があるので FreeTube から直接見ることはできません。
   AgeRestricted: 年齢制限がかかっている 動画 は Google にログインしておりかつ年齢確認を済ましている YouTube アカウントが必要なため、FreeTube
     から直接見ることはできません。
+<<<<<<< HEAD
 Videos:
   #& Sort By
   Sort By:
     Newest: '新しい'
     Oldest: '古い'
     #& Most Popular
+=======
+  DeArrow:
+    Show Original Details: 元の情報を表示
+    Show Modified Details: 変更された詳細を表示
+  DRMProtected:
+    DRM保護された動画はFreeTubeでは再生できません。これらの動画には、独自の非オープンソースのコンポーネントが必要です。この動画を視聴したい場合は、DRM対応のウェブブラウザで公式のYouTubeウェブサイトでご覧ください。
+>>>>>>> 2ce95b3c0 (Cleanup strings after auto-play changes (#6581))
 #& Playlists
 Playlist:
   #& About
@@ -1013,8 +1020,6 @@ Ok: オーケー
 Hashtag:
   Hashtag: ハッシュタグ
   This hashtag does not currently have any videos: このハッシュタグには現在動画がありません
-Playlist will pause when current video is finished: 現在の動画が終了すると、再生リストが一時停止します
-Playlist will not pause when current video is finished: 現在の動画が終了しても、再生リストは一旦停止しません
 Close Banner: バナーを閉じる
 Go to page: '{page} を表示'
 Search character limit: 検索クエリが {searchCharacterLimit} 文字の制限を超えています

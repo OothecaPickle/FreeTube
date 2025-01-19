@@ -849,9 +849,8 @@ Video:
   Loop Playlist: 'Ailadrodd Rhestr Chwarae'
   Shuffle Playlist: 'Cymysgu Rhestr Chwarae'
   Reverse Playlist: 'Gwrthdroi Rhestr Chwarae'
-  Play Next Video: 'Chwarae Fideo Nesaf'
-  Play Previous Video: 'Chwarae Fideo Blaenorol'
-  Pause on Current Video: 'Oedi ar Fideo Cyfredol'
+  Play Next Video: 'Chwarae''r Fideo Nesaf'
+  Play Previous Video: 'Chwarae''r Fideo Blaenorol'
   Watched: 'Wedi gwylio'
   Autoplay: 'Awtochwarae'
   Starting soon, please refresh the page to check again: 'Yn dechrau''n fuan, adnewyddwch
@@ -1032,23 +1031,27 @@ Tooltips:
     UseDeArrowTitles: ''
 
 # Toast Messages
-Local API Error (Click to copy): ''
-Invidious API Error (Click to copy): ''
-Falling back to Invidious API: ''
-Falling back to Local API: ''
-This video is unavailable because of missing formats. This can happen due to country unavailability.: ''
-Unknown YouTube url type, cannot be opened in app: ''
-Loop is now disabled: ''
-Loop is now enabled: ''
-Shuffle is now disabled: ''
-Shuffle is now enabled: ''
-The playlist has been reversed: ''
-Playing Next Video: ''
-Playing Previous Video: ''
-Playlist will not pause when current video is finished: ''
-Playlist will pause when current video is finished: ''
-Playing Next Video Interval: ''
-Canceled next video autoplay: ''
+    UseDeArrowThumbnails: Amnewid lluniau bach fideo gyda lluniau bach o DeArrow.
+Local API Error (Click to copy): 'Gwall API Lleol (Cliciwch i''w gopïo)'
+Invidious API Error (Click to copy): 'Gwall API Invidious (Cliciwch i''w gopïo)'
+Falling back to Invidious API: 'Dychwelyd i Invidious API'
+Falling back to Local API: 'Dychwelyd i Local API'
+This video is unavailable because of missing formats. This can happen due to country unavailability.: 'Nid
+  yw''r fideo hwn ar gael oherwydd fformatau coll. Gall hyn ddigwydd oherwydd nad
+  yw gwlad ar gael.'
+Unknown YouTube url type, cannot be opened in app: 'Math url YouTube anhysbys, nid
+  oes modd ei agor yn ap'
+Loop is now disabled: 'Cylchu nawr wedi''i hanalluogi'
+Loop is now enabled: 'Cylchu nawr wedi''i galluogi'
+Shuffle is now disabled: 'Cymysgu nawr wedi''i analluogi'
+Shuffle is now enabled: 'Cymysgu nawr wedi''i alluogi'
+The playlist has been reversed: 'Mae''r rhestr chwarae wedi''i wrthdroi'
+Playing Next Video: 'Yn Chwarae''r Fideo Nesaf'
+Playing Previous Video: 'Yn Chwarae''r Fideo Blaenorol'
+Playing Next Video Interval: 'Chwarae''r fideo nesaf mewn dim o dro. Cliciwch i ddiddymu.
+  | Yn chwarae''r fideo nesaf ymhen {nextVideoInterval} eiliad. Cliciwch i ddiddymu.
+  | Yn chwarae''r fideo nesaf ymhen {nextVideoInterval} eiliad. Cliciwch i ddiddymu.'
+Canceled next video autoplay: 'Wedi diddymu awtochwarae fideo nesaf'
 
 Default Invidious instance has been set to {instance}: ''
 Default Invidious instance has been cleared: ''
