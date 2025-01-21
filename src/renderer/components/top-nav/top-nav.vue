@@ -76,7 +76,6 @@
       <div
         v-if="!hideSearchBar"
         v-show="showSearchContainer"
-        ref="searchContainer"
         class="searchContainer"
       >
         <ft-input
