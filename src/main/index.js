@@ -871,8 +871,8 @@ function runApp() {
     })
   })
 
-  ipcMain.handle(IpcChannels.GENERATE_PO_TOKEN, (_, visitorData) => {
-    return generatePoToken(visitorData)
+  ipcMain.handle(IpcChannels.GENERATE_PO_TOKENS, (_, videoId, visitorData, context) => {
+    return generatePoToken(videoId, visitorData, context)
   })
 
   ipcMain.on(IpcChannels.ENABLE_PROXY, (_, url) => {
