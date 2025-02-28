@@ -9729,8 +9729,8 @@ yocto-queue@^1.0.0:
 
 youtubei.js@^13.1.0:
   version "13.1.0"
-  resolved "https://registry.yarnpkg.com/youtubei.js/-/youtubei.js-13.1.0.tgz#1e15da01e58c782ab6fb7cc9191a1c99f821c57f"
-  integrity sha512-uL4TyojAYET0c5NGFD7+ScCod/k8Pc/B+D5tLrunFcz1GaBjRMOGRPcNGaRmnhwisegU7ibtw0iUxCN+BZ0ang==
+  resolved "https://github.com/OothecaPickle/YouTube.js/releases/download/v13.1.0-fix-2/youtubei.js-13.1.0.tgz#2a8e19eb23cd9f5d937b885937379b61b34d7fde"
+  integrity sha512-u+6s6IwBvpv2C9VLKawUKbeChVsGCpfW7QKHjd3zjBGtQXdBD7uL/ehJ1TKnMWjOXpqhsevu0N88QglpeLIPkQ==
   dependencies:
     "@bufbuild/protobuf" "^2.0.0"
     jintr "^3.2.1"
