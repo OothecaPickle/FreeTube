@@ -18,7 +18,6 @@ jobs:
           - win-x64
           - win-arm64
           - osx-x64
-          - osx-arm64
         include:
         - runtime: linux-x64
           os: ubuntu-latest
@@ -30,9 +29,6 @@ jobs:
           os: ubuntu-latest
 
         - runtime: osx-x64
-          os: macOS-latest
-
-        - runtime: osx-arm64
           os: macOS-latest
 
         - runtime: win-x64
@@ -301,24 +297,3 @@ jobs:
       with:
         name: freetube-${{ steps.versionNumber.outputs.result }}-mac-x64.7z
         path: build/freetube-${{ steps.versionNumber.outputs.result }}-mac.7z
-
-    - name: Upload Mac arm64 .dmg Artifact
-      uses: actions/upload-artifact@v4
-      if: startsWith(matrix.os, 'macos') && startsWith(matrix.runtime, 'osx-arm64')
-      with:
-        name: freetube-${{ steps.versionNumber.outputs.result }}-mac-arm64.dmg
-        path: build/freetube-${{ steps.versionNumber.outputs.result }}-arm64.dmg
-
-    - name: Upload Mac arm64 .zip Artifact
-      uses: actions/upload-artifact@v4
-      if: startsWith(matrix.os, 'macos') && startsWith(matrix.runtime, 'osx-arm64')
-      with:
-        name: freetube-${{ steps.versionNumber.outputs.result }}-mac-arm64.zip
-        path: build/freetube-${{ steps.versionNumber.outputs.result }}-arm64-mac.zip
-
-    - name: Upload Mac arm64 .7z Artifact
-      uses: actions/upload-artifact@v4
-      if: startsWith(matrix.os, 'macos') && startsWith(matrix.runtime, 'osx-arm64')
-      with:
-        name: freetube-${{ steps.versionNumber.outputs.result }}-mac-arm64.7z
-        path: build/freetube-${{ steps.versionNumber.outputs.result }}-arm64-mac.7z
