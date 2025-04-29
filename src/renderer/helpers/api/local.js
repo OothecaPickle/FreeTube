@@ -1,4 +1,4 @@
-import { ClientType, Innertube, Misc, Parser, UniversalCache, Utils, YT, YTNodes } from 'youtubei.js'
+import { ClientType, Constants, Innertube, Misc, Parser, UniversalCache, Utils, YT, YTNodes } from 'youtubei.js'
 import Autolinker from 'autolinker'
 import { IpcChannels, SEARCH_CHAR_LIMIT } from '../../../constants'
 
@@ -196,6 +196,16 @@ export async function getLocalSearchContinuation(continuationData) {
 
 /**
  * @param {string} id
+ * @returns {Promise<{
+ *   info: YT.VideoInfo,
+ *   poToken: string | undefined,
+ *   clientInfo: {
+ *     clientName: number,
+ *     clientVersion: string,
+ *     osName: string,
+ *     osVersion: string
+ *   }
+ * }>}
  */
 export async function getLocalVideoInfo(id) {
   const webInnertube = await createInnertube({ withPlayer: true, generateSessionLocally: false })
@@ -225,6 +235,8 @@ export async function getLocalVideoInfo(id) {
   }
 
   const info = await webInnertube.getInfo(id)
+
+  let { clientName, clientVersion, osName, osVersion } = webInnertube.session.context.client
 
   let hasTrailer = info.has_trailer
   let trailerIsAgeRestricted = info.getTrailerInfo() === null
@@ -257,13 +269,22 @@ export async function getLocalVideoInfo(id) {
       info.storyboards = bypassedInfo.storyboards
 
       hasTrailer = false
-      trailerIsAgeRestricted = false
+      trailerIsAgeRestricted = false;
+
+      ({ clientName, clientVersion, osName, osVersion } = webEmbeddedInnertube.session.context.client)
     }
+  }
+
+  const clientInfo = {
+    clientName: Constants.CLIENT_NAME_IDS[clientName],
+    clientVersion,
+    osName,
+    osVersion
   }
 
   if ((info.playability_status.status === 'UNPLAYABLE' && (!hasTrailer || trailerIsAgeRestricted)) ||
     info.playability_status.status === 'LOGIN_REQUIRED') {
-    return info
+    return { info, poToken: undefined, clientInfo }
   }
 
   if (hasTrailer && info.playability_status.status !== 'OK') {
@@ -282,12 +303,18 @@ export async function getLocalVideoInfo(id) {
   }
 
   if (info.streaming_data) {
-    decipherFormats(info.streaming_data.formats, webInnertube.session.player)
+    const player = webInnertube.session.player
+
+    decipherFormats(info.streaming_data.formats, player)
+
+    if (info.streaming_data.server_abr_streaming_url) {
+      info.streaming_data.server_abr_streaming_url = player.decipher(info.streaming_data.server_abr_streaming_url)
+    }
 
     const firstFormat = info.streaming_data.adaptive_formats[0]
 
     if (firstFormat.url || firstFormat.signature_cipher || firstFormat.cipher) {
-      decipherFormats(info.streaming_data.adaptive_formats, webInnertube.session.player)
+      decipherFormats(info.streaming_data.adaptive_formats, player)
     }
 
     if (info.streaming_data.dash_manifest_url) {
@@ -303,7 +330,7 @@ export async function getLocalVideoInfo(id) {
     }
   }
 
-  return info
+  return { info, poToken: sessionPoToken, clientInfo }
 }
 
 /**
