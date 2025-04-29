@@ -24,8 +24,8 @@ import {
 import {
   addKeyboardShortcutToActionTitle,
   getPicturesPath,
-  showToast,
-  writeFileWithPicker
+  showSaveDialog,
+  showToast
 } from '../../helpers/utils'
 import { MANIFEST_TYPE_SABR } from '../../helpers/player/SabrManifestParser'
 import { setupSabrScheme } from '../../helpers/player/SabrSchemePlugin'
@@ -839,7 +839,7 @@ export default defineComponent({
 
       uiConfig.controlPanelElements.push('fullscreen')
 
-      if (!enableScreenshot.value || props.format === 'audio') {
+      if (!process.env.IS_ELECTRON || !enableScreenshot.value || props.format === 'audio') {
         const index = elementList.indexOf('ft_screenshot')
         elementList.splice(index, 1)
       }
@@ -1633,6 +1633,8 @@ export default defineComponent({
     // #region screenshots
 
     async function takeScreenshot() {
+      // TODO: needs to be refactored to be less reliant on node stuff, so that it can be used in the web (and android) builds
+
       const video_ = video.value
 
       const width = video_.videoWidth
@@ -1657,7 +1659,7 @@ export default defineComponent({
       let filename
       try {
         filename = await store.dispatch('parseScreenshotCustomFileName', {
-          date: new Date(),
+          date: new Date(Date.now()),
           playerTime: video_.currentTime,
           videoId: props.videoId
         })
@@ -1668,48 +1670,59 @@ export default defineComponent({
         return
       }
 
+      let subDir = ''
+      if (filename.indexOf(path.sep) !== -1) {
+        const lastIndex = filename.lastIndexOf(path.sep)
+        subDir = filename.substring(0, lastIndex)
+        filename = filename.substring(lastIndex + 1)
+      }
       const filenameWithExtension = `${filename}.${format}`
 
-      if (!process.env.IS_ELECTRON || screenshotAskPath.value) {
+      let dirPath
+      let filePath
+      if (screenshotAskPath.value) {
         const wasPlaying = !video_.paused
         if (wasPlaying) {
           video_.pause()
         }
 
-        try {
-          /** @type {Blob} */
-          const blob = await new Promise((resolve) => canvas.toBlob(resolve, mimeType, imageQuality))
-
-          const saved = await writeFileWithPicker(
-            filenameWithExtension,
-            blob,
-            format.toUpperCase(),
-            mimeType,
-            `.${format}`,
-            'player-screenshots',
-            'pictures'
-          )
-
-          if (saved) {
-            showToast(t('Screenshot Success'))
-          }
-        } catch (error) {
-          console.error(error)
-          showToast(t('Screenshot Error', { error }))
+        if (screenshotFolder.value === '' || !(await pathExists(screenshotFolder.value))) {
+          dirPath = await getPicturesPath()
+        } else {
+          dirPath = screenshotFolder.value
         }
 
-        canvas.remove()
+        const options = {
+          defaultPath: path.join(dirPath, filenameWithExtension),
+          filters: [
+            {
+              name: format.toUpperCase(),
+              extensions: [format]
+            }
+          ]
+        }
 
+        const response = await showSaveDialog(options)
         if (wasPlaying) {
           video_.play()
         }
-      } else {
-        let dirPath
+        if (response.canceled || response.filePath === '') {
+          canvas.remove()
+          return
+        }
 
+        filePath = response.filePath
+        if (!filePath.endsWith(`.${format}`)) {
+          filePath = `${filePath}.${format}`
+        }
+
+        dirPath = path.dirname(filePath)
+        store.dispatch('updateScreenshotFolderPath', dirPath)
+      } else {
         if (screenshotFolder.value === '') {
-          dirPath = path.join(await getPicturesPath(), 'Freetube')
+          dirPath = path.join(await getPicturesPath(), 'Freetube', subDir)
         } else {
-          dirPath = screenshotFolder.value
+          dirPath = path.join(screenshotFolder.value, subDir)
         }
 
         if (!(await pathExists(dirPath))) {
@@ -1722,25 +1735,24 @@ export default defineComponent({
             return
           }
         }
-
-        const filePath = path.join(dirPath, filenameWithExtension)
-
-        canvas.toBlob((result) => {
-          result.arrayBuffer().then(ab => {
-            const arr = new Uint8Array(ab)
-
-            fs.writeFile(filePath, arr)
-              .then(() => {
-                showToast(t('Screenshot Success'))
-              })
-              .catch((err) => {
-                console.error(err)
-                showToast(t('Screenshot Error', { error: err }))
-              })
-          })
-        }, mimeType, imageQuality)
-        canvas.remove()
+        filePath = path.join(dirPath, filenameWithExtension)
       }
+
+      canvas.toBlob((result) => {
+        result.arrayBuffer().then(ab => {
+          const arr = new Uint8Array(ab)
+
+          fs.writeFile(filePath, arr)
+            .then(() => {
+              showToast(t('Screenshot Success', { filePath }))
+            })
+            .catch((err) => {
+              console.error(err)
+              showToast(t('Screenshot Error', { error: err }))
+            })
+        })
+      }, mimeType, imageQuality)
+      canvas.remove()
     }
 
     // #endregion screenshots
@@ -1928,8 +1940,10 @@ export default defineComponent({
 
       shakaContextMenu.registerElement('ft_stats', null)
 
-      shakaControls.registerElement('ft_screenshot', null)
-      shakaOverflowMenu.registerElement('ft_screenshot', null)
+      if (process.env.IS_ELECTRON) {
+        shakaControls.registerElement('ft_screenshot', null)
+        shakaOverflowMenu.registerElement('ft_screenshot', null)
+      }
     }
 
     // #endregion custom player controls
@@ -2337,7 +2351,7 @@ export default defineComponent({
           }
           break
         case KeyboardShortcuts.VIDEO_PLAYER.GENERAL.TAKE_SCREENSHOT:
-          if (enableScreenshot.value && props.format !== 'audio') {
+          if (process.env.IS_ELECTRON && enableScreenshot.value && props.format !== 'audio') {
             event.preventDefault()
             // Take screenshot
             takeScreenshot()
@@ -2558,7 +2572,9 @@ export default defineComponent({
 
       videoResizeObserver.observe(videoElement)
 
-      registerScreenshotButton()
+      if (process.env.IS_ELECTRON) {
+        registerScreenshotButton()
+      }
       registerAudioTrackSelection()
       registerAutoplayToggle()
 

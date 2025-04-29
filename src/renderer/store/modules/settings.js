@@ -288,7 +288,7 @@ const state = {
   enableScreenshot: false,
   screenshotFormat: 'png',
   screenshotQuality: 95,
-  screenshotAskPath: !process.env.IS_ELECTRON,
+  screenshotAskPath: false,
   screenshotFolderPath: '',
   screenshotFilenamePattern: '%Y%M%D-%H%N%S',
   settingsSectionSortEnabled: false,
