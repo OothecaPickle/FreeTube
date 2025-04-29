@@ -6,7 +6,7 @@ import FtSelect from '../ft-select/ft-select.vue'
 import FtButton from '../FtButton/FtButton.vue'
 import FtInput from '../ft-input/ft-input.vue'
 import { mapActions } from 'vuex'
-import { DefaultFolderKind, IpcChannels } from '../../../constants'
+import { IpcChannels } from '../../../constants'
 
 export default defineComponent({
   name: 'DownloadSettings',
@@ -50,11 +50,20 @@ export default defineComponent({
     chooseDownloadingFolder: async function () {
       if (process.env.IS_ELECTRON) {
         const { ipcRenderer } = require('electron')
-        ipcRenderer.send(IpcChannels.CHOOSE_DEFAULT_FOLDER, DefaultFolderKind.DOWNLOADS)
+
+        const folder = await ipcRenderer.invoke(
+          IpcChannels.SHOW_OPEN_DIALOG,
+          { properties: ['openDirectory'] }
+        )
+
+        if (folder.canceled) return
+
+        this.updateDownloadFolderPath(folder.filePaths[0])
       }
     },
     ...mapActions([
       'updateDownloadAskPath',
+      'updateDownloadFolderPath',
       'updateDownloadBehavior'
     ])
   }

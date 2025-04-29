@@ -48,7 +48,6 @@ const IpcChannels = {
 
   GENERATE_PO_TOKENS: 'generate-po-tokens',
 
-  CHOOSE_DEFAULT_FOLDER: 'choose-default-folder',
   WRITE_SCREENSHOT: 'write-screenshot',
 }
 
@@ -130,11 +129,6 @@ const SyncEvents = {
     UPDATE_SHORTS_WITH_CHANNEL_PAGE_SHORTS_BY_CHANNEL: 23,
     UPDATE_COMMUNITY_POSTS_BY_CHANNEL: 24,
   },
-}
-
-const DefaultFolderKind = {
-  DOWNLOADS: 0,
-  SCREENSHOTS: 1
 }
 
 /*
@@ -227,7 +221,6 @@ export {
   IpcChannels,
   DBActions,
   SyncEvents,
-  DefaultFolderKind,
   KeyboardShortcuts,
   MAIN_PROFILE_ID,
   MOBILE_WIDTH_THRESHOLD,

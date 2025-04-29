@@ -8,7 +8,7 @@ import FtFlexBox from '../ft-flex-box/ft-flex-box.vue'
 import FtButton from '../FtButton/FtButton.vue'
 import FtInput from '../ft-input/ft-input.vue'
 import FtTooltip from '../FtTooltip/FtTooltip.vue'
-import { DefaultFolderKind, IpcChannels } from '../../../constants'
+import { IpcChannels } from '../../../constants'
 import path from 'path'
 import { getPicturesPath } from '../../helpers/utils'
 
@@ -301,7 +301,15 @@ export default defineComponent({
       // only use with electron
       if (process.env.IS_ELECTRON) {
         const { ipcRenderer } = require('electron')
-        ipcRenderer.send(IpcChannels.CHOOSE_DEFAULT_FOLDER, DefaultFolderKind.SCREENSHOTS)
+        const folder = await ipcRenderer.invoke(
+          IpcChannels.SHOW_OPEN_DIALOG,
+          { properties: ['openDirectory'] }
+        )
+
+        if (!folder.canceled) {
+          await this.updateScreenshotFolderPath(folder.filePaths[0])
+          this.getScreenshotFolderPlaceholder()
+        }
       }
     },
 
@@ -357,6 +365,7 @@ export default defineComponent({
       'updateScreenshotFormat',
       'updateScreenshotQuality',
       'updateScreenshotAskPath',
+      'updateScreenshotFolderPath',
       'updateScreenshotFilenamePattern',
       'parseScreenshotCustomFileName',
     ])
