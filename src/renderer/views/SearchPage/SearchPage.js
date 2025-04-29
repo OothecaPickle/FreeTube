@@ -9,7 +9,7 @@ import {
   showToast,
 } from '../../helpers/utils'
 import { getLocalSearchContinuation, getLocalSearchResults } from '../../helpers/api/local'
-import { getInvidiousSearchResults, invidiousAPICall } from '../../helpers/api/invidious'
+import { getInvidiousSearchResults } from '../../helpers/api/invidious'
 import { SEARCH_CHAR_LIMIT } from '../../../constants'
 
 export default defineComponent({
