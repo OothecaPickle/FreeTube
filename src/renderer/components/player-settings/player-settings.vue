@@ -95,7 +95,7 @@
         :label="$t('Settings.Player Settings.Autoplay Interruption Timer')"
         :default-value="defaultAutoplayInterruptionIntervalHours"
         :min-value="1"
-        :max-value="12"
+        :max-value="48"
         :step="1"
         value-extension="h"
         @change="updateDefaultAutoplayInterruptionIntervalHours"
