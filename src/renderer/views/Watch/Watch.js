@@ -28,6 +28,7 @@ import {
   parseLocalTextRuns,
   parseLocalWatchNextVideo
 } from '../../helpers/api/local'
+import { getVideoDislikes } from '../../helpers/returnyoutubedislike'
 import {
   convertInvidiousToLocalFormat,
   generateInvidiousDashManifestLocally,
@@ -289,6 +290,9 @@ export default defineComponent({
       // `this.$refs.player?.hasLoaded` cannot be used in computed property
       return !this.isLoading
     },
+    useReturnYouTubeDislikes: function () {
+      return this.$store.getters.getUseReturnYouTubeDislikes
+    }
   },
   watch: {
     async $route() {
@@ -488,6 +492,12 @@ export default defineComponent({
 
           // YouTube doesn't return dislikes anymore
           this.videoDislikeCount = 0
+
+          if (this.useReturnYouTubeDislikes) {
+            getVideoDislikes(this.videoId).then(dislikes => {
+              this.videoDislikeCount = isNaN(dislikes) ? 0 : dislikes
+            })
+          }
         }
 
         this.isLive = !!result.basic_info.is_live
@@ -863,6 +873,11 @@ export default defineComponent({
           } else {
             this.videoLikeCount = result.likeCount
             this.videoDislikeCount = result.dislikeCount
+            if (this.useReturnYouTubeDislikes) {
+              getVideoDislikes(this.videoId).then((dislikes) => {
+                this.videoDislikeCount = isNaN(dislikes) ? 0 : dislikes
+              })
+            }
           }
 
           this.videoGenreIsMusic = result.genre === 'Music'

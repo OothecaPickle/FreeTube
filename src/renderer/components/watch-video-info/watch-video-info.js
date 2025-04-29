@@ -275,6 +275,9 @@ export default defineComponent({
     quickBookmarkIconTheme: function () {
       return this.isInQuickBookmarkPlaylist ? 'base favorite' : 'base'
     },
+    useReturnYoutubeDislikes: function () {
+      return this.$store.getters.getUseReturnYouTubeDislikes
+    }
   },
   mounted: function () {
     if ('mediaSession' in navigator) {

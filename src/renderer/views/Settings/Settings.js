@@ -15,6 +15,7 @@ import ParentalControlSettings from '../../components/ParentalControlSettings.vu
 import ExperimentalSettings from '../../components/ExperimentalSettings/ExperimentalSettings.vue'
 import PasswordSettings from '../../components/PasswordSettings/PasswordSettings.vue'
 import PasswordDialog from '../../components/PasswordDialog/PasswordDialog.vue'
+import RydSettings from '../../components/ryd-settings/ryd-settings.vue'
 import FtToggleSwitch from '../../components/ft-toggle-switch/ft-toggle-switch.vue'
 import FtButton from '../../components/FtButton/FtButton.vue'
 import FtSettingsMenu from '../../components/FtSettingsMenu/FtSettingsMenu.vue'
@@ -36,6 +37,7 @@ export default defineComponent({
     'parental-control-settings': ParentalControlSettings,
     'password-settings': PasswordSettings,
     'password-dialog': PasswordDialog,
+    'ryd-settings': RydSettings,
     'ft-button': FtButton,
     'ft-toggle-switch': FtToggleSwitch,
     'ft-settings-menu': FtSettingsMenu,
