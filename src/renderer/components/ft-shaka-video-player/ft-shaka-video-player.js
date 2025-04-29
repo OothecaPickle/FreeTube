@@ -1661,7 +1661,7 @@ export default defineComponent({
       const filenameWithExtension = `${filename}.${format}`
 
       const wasPlaying = !video_.paused
-      if ((!process.env.IS_ELECTRON || screenshotAskPath.value) && wasPlaying) {
+      if (wasPlaying) {
         video_.pause()
       }
 
@@ -1698,7 +1698,7 @@ export default defineComponent({
       } finally {
         canvas.remove()
 
-        if ((!process.env.IS_ELECTRON || screenshotAskPath.value) && wasPlaying) {
+        if (wasPlaying) {
           video_.play()
         }
       }
