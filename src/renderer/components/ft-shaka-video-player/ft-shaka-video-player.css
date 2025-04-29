@@ -328,7 +328,7 @@
   /* add transparency to big play button */
   :deep(.shaka-controls-container[shown='true'] > .shaka-play-button-container > .shaka-play-button) {
     padding: 3%;
-    opacity: 0.60 !important;
+    opacity: 0.6 !important;
   }
 }
 
