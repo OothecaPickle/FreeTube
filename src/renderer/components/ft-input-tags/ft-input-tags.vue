@@ -45,20 +45,6 @@
           :key="tag.id"
         >
           <template v-if="areChannelTags">
-            <router-link
-              v-if="tag.icon"
-              :to="tag.iconHref ?? ''"
-              class="tag-icon-link"
-            >
-              <img
-                :src="tag.icon"
-                alt=""
-                class="tag-icon"
-                height="24"
-                width="24"
-                loading="lazy"
-              >
-            </router-link>
             <span>{{ (tag.preferredName) ? tag.preferredName : tag.name }}</span>
           </template>
           <span v-else>{{ tag }}</span>
